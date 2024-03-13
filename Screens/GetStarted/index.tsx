@@ -3,10 +3,10 @@ import React from 'react';
 import {Color} from '../../Constant';
 import CustomButton from '../../Components/CustomButton';
 
-const GetStarted = ({navigation}:any) => {
+const GetStarted = ({navigation}: any) => {
   return (
     <ScrollView
-      contentContainerStyle={{flexGrow: 1,justifyContent:'center'}}
+      contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}
       scrollEnabled={false}
       style={{backgroundColor: Color.Primary}}>
       <View
@@ -26,19 +26,18 @@ const GetStarted = ({navigation}:any) => {
         <Text style={styles.textType1}>Tutor within 24 Hours. </Text>
       </View>
       <View style={{margin: 10}}></View>
-      <View style={{alignItems:"center"}}>
-      <Image source={require('../../Images/getStarted.png')} />
+      <View style={{alignItems: 'center'}}>
+        <Image source={require('../../Images/getStarted.png')} />
       </View>
       <View style={{margin: 20}}></View>
-      <View style={{ marginHorizontal: 35,}}>
-
-      <CustomButton
-                btnTitle="Get Started"
-                backgroundColor={Color.WhiteSmoke}
-                color={Color.Black}
-                onPress={() => navigation.navigate('Home')}
-                />
-                </View>
+      <View style={{marginHorizontal: 35}}>
+        <CustomButton
+          btnTitle="Get Started"
+          backgroundColor={Color.WhiteSmoke}
+          color={Color.Black}
+          onPress={() => navigation.navigate('Register')}
+        />
+      </View>
     </ScrollView>
   );
 };
