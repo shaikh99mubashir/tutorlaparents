@@ -4,10 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../../Screens/Home';
 import Splash from '../../Screens/Splash';
 import { Color } from '../../Constant';
-import LatestJobTicket from '../../Screens/LatestJobTicket';
+import LatestJobTicket from '../../Screens/JobTicket';
 import ClassSchedule from '../../Screens/ClassSchedule';
 import Chat from '../../Screens/Chat';
-import TutorProfileMenu from '../../Screens/TutorProfileMenu';
+import TutorProfileMenu from '../../Screens/ProfileMenu';
 
 const Tab = createBottomTabNavigator();
 

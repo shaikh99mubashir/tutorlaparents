@@ -184,7 +184,7 @@ const UpdateProfile = ({navigation}: any) => {
           btnTitle="Continue"
           backgroundColor={Color.Primary}
           color={Color.white}
-          onPress={() => navigation.navigate('VerifyCode')}
+          onPress={() => navigation.navigate('BottomNav')}
         />
          <View style={{margin: 20}}></View>
       </ScrollView>
