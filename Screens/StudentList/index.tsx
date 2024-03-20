@@ -9,7 +9,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {FlatList} from 'react-native';
 import CustomButton from '../../Components/CustomButton';
-const StudentList = () => {
+const StudentList = ({navigation}:any) => {
   const data = [
     {
       id: 1,
@@ -91,7 +91,7 @@ const StudentList = () => {
           backgroundColor: Color.GhostWhite,
           paddingHorizontal: 25,
         }}>
-        <Header goBack title="Student List" />
+        <Header goBack title="Student List" navigation={navigation}/>
         {/* <View
           style={{backgroundColor: Color.white, padding: 20, borderRadius: 16}}>
           <View style={{flexDirection: 'row', gap: 10, alignItems: 'center'}}>

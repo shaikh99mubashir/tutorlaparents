@@ -25,6 +25,8 @@ export default {
     SantaGray:'#A0A4AB',
     shinyGrey:"#E9F1FE",
     lineColor:'rgba(195, 213, 226, 0.70)',
-    Red:'#FF5A4E'
+    Red:'#FF5A4E',
+    DarkGreen:'#0A7B4C',
+    Gray78 :'#C7C7C7',
     
 };

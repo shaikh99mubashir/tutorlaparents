@@ -16,6 +16,7 @@ import ClassSchedule from '../../Screens/ClassSchedule/index.tsx';
 import Chat from '../../Screens/Chat/index.tsx';
 import ProfileMenu from '../../Screens/ProfileMenu/index.tsx';
 import StudentList from '../../Screens/StudentList/index.tsx';
+import TutorRequest from '../../Screens/TutorRequest/index.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -30,10 +31,11 @@ const MyStack = () => {
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
         <Stack.Screen name="GetStarted" component={GetStarted} />
         <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="VerifyCode" component={VerifyCode} /> */}
-        {/* <Stack.Screen name="UpdateProfile" component={UpdateProfile} /> */}
+        <Stack.Screen name="VerifyCode" component={VerifyCode} />
+        <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
         <Stack.Screen name="BottomNav" component={BottomNav} />
-        <Stack.Screen name="StudentList" component={StudentList} />
+        <Stack.Screen name="StudentList" component={StudentList} /> */}
+        <Stack.Screen name="TutorRequest" component={TutorRequest} />
         <Stack.Screen name="JobTicket" component={JobTicket} />
         <Stack.Screen name="ClassSchedule" component={ClassSchedule} />
         <Stack.Screen name="Chat" component={Chat} />
