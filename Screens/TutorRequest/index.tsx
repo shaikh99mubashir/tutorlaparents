@@ -61,7 +61,7 @@ const TutorRequest = ({navigation}: any) => {
       );
     }
     return dropDowns;
-  };
+  }
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
