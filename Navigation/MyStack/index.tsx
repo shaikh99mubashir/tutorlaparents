@@ -32,9 +32,9 @@ const MyStack = () => {
         <Stack.Screen name="GetStarted" component={GetStarted} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="VerifyCode" component={VerifyCode} />
-        <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
+        <Stack.Screen name="UpdateProfile" component={UpdateProfile} /> */}
         <Stack.Screen name="BottomNav" component={BottomNav} />
-        <Stack.Screen name="StudentList" component={StudentList} /> */}
+        <Stack.Screen name="StudentList" component={StudentList} />
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
         <Stack.Screen name="JobTicket" component={JobTicket} />
         <Stack.Screen name="ClassSchedule" component={ClassSchedule} />

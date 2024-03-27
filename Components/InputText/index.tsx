@@ -2,10 +2,10 @@ import { StyleSheet, Text, View,TextInput } from 'react-native'
 import React from 'react'
 import { Color } from '../../Constant'
 
-const InputText = ({ label, placeholder, onChangeText, value, error,keyboardType }: any) => {
+const InputText = ({ label, placeholder, onChangeText, value, error,keyboardType, Required }: any) => {
   return (
     <View style={{ gap: 5, marginTop: 0 }}>
-    <Text style={styles.label}>{label}</Text>
+    <Text style={styles.label}>{label} {Required  && <Text style={{color:Color.Red}}>*</Text>}</Text>
     <View style={styles.inputContainer}>
       <TextInput
         style={[

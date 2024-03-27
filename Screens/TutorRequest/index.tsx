@@ -15,6 +15,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import CustomDropDown from '../../Components/CustomDropDown';
+import CustomButton from '../../Components/CustomButton';
 
 const TutorRequest = ({navigation}: any) => {
   const [count, setCount] = useState(1); // initial count is 1
@@ -43,6 +44,7 @@ const TutorRequest = ({navigation}: any) => {
       setCount(count - 1);
     }
   };
+
   const renderDropDowns = () => {
     const dropDowns = [];
     for (let i = 0; i < count; i++) {
@@ -52,7 +54,7 @@ const TutorRequest = ({navigation}: any) => {
           setSelectedSubject={(value: string) => setSelectedState(value)}
           selectedSubject={selectedState}
           ddTitle={`Select Student ${i + 1}`}
-          dropdownPlace={'Select Year'}
+          dropdownPlace={'Select Student'}
           subject={state}
           categoryShow={'subject'}
         />,
@@ -122,12 +124,17 @@ const TutorRequest = ({navigation}: any) => {
 
       <View style={{margin: 10}}></View>
       <View
-        style={{borderWidth: 1, borderRadius: 12, borderColor: Color.Primary,}}>
+        style={{
+          borderWidth: 1,
+          borderRadius: 12,
+          borderColor: Color.Primary,
+          marginBottom: 30,
+        }}>
         <View
           style={{
             backgroundColor: Color.Primary,
             height: 60,
-            borderRadius: 12,
+            borderRadius: 10,
             justifyContent: 'center',
             paddingHorizontal: 20,
             borderWidth: 1,
@@ -196,21 +203,16 @@ const TutorRequest = ({navigation}: any) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{ paddingHorizontal: 20, marginBottom: 30 }}>
-
-          <Text style={[styles.textType2, {fontSize: 20}]}>Student Details</Text>
+        <View style={{paddingHorizontal: 20, marginBottom: 30}}>
+          <Text style={[styles.textType2, {fontSize: 20}]}>
+            Student Details
+          </Text>
           <View style={{margin: 4}}></View>
-          {/* <CustomDropDown
-              setSelectedSubject={setSelectedState}
-              selectedSubject={selectedState}
-              ddTitle="Select Student"
-              dropdownPlace={'Select Year'}
-              subject={state}
-              categoryShow={'subject'}
-              studentCount={count}
-            /> */}
-             {renderDropDowns()}
+          {renderDropDowns()}
         </View>
+      </View>
+      <View style={{marginBottom:30}}>
+        <CustomButton btnTitle='Next'/>
       </View>
     </ScrollView>
   );
