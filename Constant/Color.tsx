@@ -28,6 +28,7 @@ export default {
     Red:'#FF5A4E',
     DarkGreen:'#0A7B4C',
     Gray78 :'#C7C7C7',
-    AliceBlue:"#DCE5F2"
+    AliceBlue:"#DCE5F2",
+    star:'#F4A119',
     
 };

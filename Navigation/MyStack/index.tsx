@@ -17,6 +17,10 @@ import Chat from '../../Screens/Chat/index.tsx';
 import ProfileMenu from '../../Screens/ProfileMenu/index.tsx';
 import StudentList from '../../Screens/StudentList/index.tsx';
 import TutorRequest from '../../Screens/TutorRequest/index.tsx';
+import TutorRequestDetailsCompleted from '../../Screens/TutorRequestDetailsCompleted/index.tsx';
+import AppliedTutorDetails from '../../Screens/AppliedTutorDetails/index.tsx';
+import TutorProfile from '../../Screens/TutorProfile/index.tsx';
+import PayCommitmentFee from '../../Screens/PayCommitmentFee/index.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -37,6 +41,10 @@ const MyStack = () => {
         <Stack.Screen name="StudentList" component={StudentList} />
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
         <Stack.Screen name="JobTicket" component={JobTicket} />
+        <Stack.Screen name="TutorRequestDetailsCompleted" component={TutorRequestDetailsCompleted} />
+        <Stack.Screen name="AppliedTutorDetails" component={AppliedTutorDetails} />
+        <Stack.Screen name="TutorProfile" component={TutorProfile} />
+        <Stack.Screen name="PayCommitmentFee" component={PayCommitmentFee} />
         <Stack.Screen name="ClassSchedule" component={ClassSchedule} />
         <Stack.Screen name="Chat" component={Chat} />
         <Stack.Screen name="ProfileMenu" component={ProfileMenu} />

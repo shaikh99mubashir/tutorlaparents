@@ -49,10 +49,10 @@ const JobTicket = ({navigation}: any) => {
     {id: '5', title: 'English ', jtuid: 'J9000321', mode: 'online'},
   ];
   const firstRoute = useCallback(() => {
-
     const renderTicketData = ({item}: any) => {
       return (
         <TouchableOpacity
+        onPress={()=> navigation.navigate('AppliedTutorDetails',item)}
           activeOpacity={0.8}
           style={{
             borderWidth: 0.8,
@@ -247,24 +247,21 @@ const JobTicket = ({navigation}: any) => {
       <View style={{width: '100%'}}>
         <View style={{marginTop: 20}}></View>
 
-        <>
         <View>
-        <FlatList
-          data={data}
-          renderItem={renderTicketData}
-          keyExtractor={item => item.id.toString()}
-          showsHorizontalScrollIndicator={false}
-        />
-        </View>
+          <View>
+            <FlatList
+              data={data}
+              renderItem={renderTicketData}
+              keyExtractor={item => item.id.toString()}
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
           <View style={{marginBottom: 50}}></View>
-         <View style={{position:'absolute', bottom:0, width:'100%'}}>
-        <CustomButton btnTitle='Request New Tutor' />
-        <View style={{marginBottom: 20}}></View>
-         </View>
-         </>
-         
-
-        
+          <View style={{position: 'absolute', bottom: 0, width: '100%'}}>
+            <CustomButton btnTitle="Request New Tutor" />
+            <View style={{marginBottom: 20}}></View>
+          </View>
+        </View>
       </View>
     );
   }, []);
@@ -295,6 +292,7 @@ const JobTicket = ({navigation}: any) => {
     const renderAppliedTicketData = ({item}: any) => {
       return (
         <TouchableOpacity
+        onPress={()=>navigation.navigate('TutorRequestDetailsCompleted', item)}
           activeOpacity={0.8}
           style={{
             borderWidth: 0.8,
@@ -469,50 +467,54 @@ const JobTicket = ({navigation}: any) => {
               paddingTop: 15,
               borderTopWidth: 1,
               borderTopColor: '#eee',
-              justifyContent:"space-between",
-              alignItems:"center"
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}>
-              <View style={{flexDirection:'column'}}>
-            <Text
-              style={[
-                styles.textType3,
-                {
-                  fontFamily: 'Circular Std Book',
-                  color: Color.DustyGrey,
-                  fontSize: 12,marginBottom:5
-                },
-              ]}>
-              Posted:
-            </Text>
-            <View
-              style={{
-                backgroundColor: Color.PattensBlue,
-                borderRadius: 5,
-                justifyContent: 'center',
-                height: 33,
-              }}>
+            <View style={{flexDirection: 'column'}}>
+              <Text
+                style={[
+                  styles.textType3,
+                  {
+                    fontFamily: 'Circular Std Book',
+                    color: Color.DustyGrey,
+                    fontSize: 12,
+                    marginBottom: 5,
+                  },
+                ]}>
+                Posted:
+              </Text>
               <View
                 style={{
-                  alignItems: 'center',
+                  backgroundColor: Color.PattensBlue,
+                  borderRadius: 5,
                   justifyContent: 'center',
-                  flexDirection: 'row',
-                  gap: 10,
-                  paddingHorizontal: 10,
+                  height: 33,
                 }}>
-                <AntDesign name="calendar" size={20} color={Color.Primary} />
-                <Text
-                  style={[
-                    styles.textType3,
-                    {color: Color.Primary, fontFamily: 'Circular Std Book'},
-                  ]}>
-                  Jan 12, 2024
-                </Text>
+                <View
+                  style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'row',
+                    gap: 10,
+                    paddingHorizontal: 10,
+                  }}>
+                  <AntDesign name="calendar" size={20} color={Color.Primary} />
+                  <Text
+                    style={[
+                      styles.textType3,
+                      {color: Color.Primary, fontFamily: 'Circular Std Book'},
+                    ]}>
+                    Jan 12, 2024
+                  </Text>
+                </View>
               </View>
             </View>
-            </View>
-            <View style={{top:10}}>
-              <MaterialCommunityIcons name="check-underline-circle" size={25} color={Color.Primary} />
-              
+            <View style={{top: 10}}>
+              <MaterialCommunityIcons
+                name="check-underline-circle"
+                size={25}
+                color={Color.Primary}
+              />
             </View>
           </View>
         </TouchableOpacity>
@@ -521,13 +523,13 @@ const JobTicket = ({navigation}: any) => {
     return (
       <View style={{marginTop: 15, width: '100%'}}>
         <View>
-        <FlatList
-          data={data}
-          renderItem={renderAppliedTicketData}
-          keyExtractor={item => item.id.toString()}
-          showsHorizontalScrollIndicator={false}
+          <FlatList
+            data={data}
+            renderItem={renderAppliedTicketData}
+            keyExtractor={item => item.id.toString()}
+            showsHorizontalScrollIndicator={false}
           />
-          </View>
+        </View>
         <View style={{marginBottom: 50}}></View>
       </View>
     );
@@ -542,34 +544,64 @@ const JobTicket = ({navigation}: any) => {
       }}>
       <Header title="Tutor Request" tab={currentTab} navigation={navigation} />
 
-      {data.length > 0 ?
-      <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false} style={{}}>
-
-        <View style={{marginTop: 10}}>
-          <CustomTabView
-            currentTab={currentTab}
-            firstRoute={firstRoute}
-            secondRoute={secondRoute}
-            activateTab={activateTab}
-            firstRouteTitle="Open"
-            secondRouteTitle={`Completed (12)`}
-          />
-        </View>
-      </ScrollView>
-        :
+      {data.length > 0 ? (
+        <ScrollView
+          nestedScrollEnabled
+          showsVerticalScrollIndicator={false}
+          style={{}}>
+          <View style={{marginTop: 10}}>
+            <CustomTabView
+              currentTab={currentTab}
+              firstRoute={firstRoute}
+              secondRoute={secondRoute}
+              activateTab={activateTab}
+              firstRouteTitle="Open"
+              secondRouteTitle={`Completed (12)`}
+            />
+          </View>
+        </ScrollView>
+      ) : (
         <View>
-        <View>
-          <View style={{marginTop:100}}>
-         <Image source={require('../../Images/emptytutorrequest.png')}resizeMode='contain' style={{alignItems:"center", justifyContent:'center',width:"98%"}}/>
-         <Text style={[styles.textType1,{textAlign:'center', fontSize:30, lineHeight:36}]}>Ready to Find the Perfect Tutor?</Text>
-         <Text style={[styles.textType3,{textAlign:'center',color:Color.IronsideGrey,fontFamily: 'Circular Std Book', marginTop:10}]}>Create a request, and it will show up right here.</Text>
-         </View>
+          <View>
+            <View style={{marginTop: 100}}>
+              <Image
+                source={require('../../Images/emptytutorrequest.png')}
+                resizeMode="contain"
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '98%',
+                }}
+              />
+              <Text
+                style={[
+                  styles.textType1,
+                  {textAlign: 'center', fontSize: 30, lineHeight: 36},
+                ]}>
+                Ready to Find the Perfect Tutor?
+              </Text>
+              <Text
+                style={[
+                  styles.textType3,
+                  {
+                    textAlign: 'center',
+                    color: Color.IronsideGrey,
+                    fontFamily: 'Circular Std Book',
+                    marginTop: 10,
+                  },
+                ]}>
+                Create a request, and it will show up right here.
+              </Text>
+            </View>
+          </View>
+          <View style={{position: 'absolute', bottom: -190, right: 0}}>
+            <Image
+              source={require('../../Images/Add-primrary.png')}
+              resizeMode="contain"
+            />
+          </View>
         </View>
-         <View style={{position:"absolute",bottom:-190, right:0}}>
-         <Image source={require('../../Images/Add-primrary.png')}resizeMode='contain'/>
-         </View>
-         </View>
-        }
+      )}
     </View>
   );
 };
