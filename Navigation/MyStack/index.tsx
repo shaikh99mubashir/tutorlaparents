@@ -21,6 +21,12 @@ import TutorRequestDetailsCompleted from '../../Screens/TutorRequestDetailsCompl
 import AppliedTutorDetails from '../../Screens/AppliedTutorDetails/index.tsx';
 import TutorProfile from '../../Screens/TutorProfile/index.tsx';
 import PayCommitmentFee from '../../Screens/PayCommitmentFee/index.tsx';
+import PaymentGateway from '../../Screens/PaymentGateway/index.tsx';
+import PaymentCongratulations from '../../Screens/PaymentCongratulations/index.tsx';
+import AddCard from '../../Screens/AddCard/index.tsx';
+import Settings from '../../Screens/Settings/index.tsx';
+import AccountInformation from '../../Screens/AccountInformation/index.tsx';
+import ChangePassword from '../../Screens/ChangePassword/index.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -45,6 +51,12 @@ const MyStack = () => {
         <Stack.Screen name="AppliedTutorDetails" component={AppliedTutorDetails} />
         <Stack.Screen name="TutorProfile" component={TutorProfile} />
         <Stack.Screen name="PayCommitmentFee" component={PayCommitmentFee} />
+        <Stack.Screen name="PaymentGateway" component={PaymentGateway} />
+        <Stack.Screen name="PaymentCongratulations" component={PaymentCongratulations} />
+        <Stack.Screen name="AddCard" component={AddCard} />
+        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="AccountInformation" component={AccountInformation} />
+        <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="ClassSchedule" component={ClassSchedule} />
         <Stack.Screen name="Chat" component={Chat} />
         <Stack.Screen name="ProfileMenu" component={ProfileMenu} />
