@@ -41,7 +41,7 @@ const Settings = ({navigation}: any) => {
             paddingHorizontal: 20,
           }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('AccountInformation')}
+            onPress={() => navigation.navigate('')}
             activeOpacity={0.8}
             style={{
               flexDirection: 'row',

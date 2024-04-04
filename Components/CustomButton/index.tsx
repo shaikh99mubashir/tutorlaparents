@@ -9,7 +9,7 @@ const CustomButton = ({onPress,btnTitle, color, backgroundColor,height ,fontSize
     <TouchableOpacity
     onPress={onPress}
     activeOpacity={0.8}
-    style={[styles.btn, { marginVertical: 0,backgroundColor: backgroundColor ? backgroundColor :'#000', flexDirection:'row',gap:5, alignItems:"center" }]}
+    style={[styles.btn, { marginVertical: 0,backgroundColor: backgroundColor ? backgroundColor :'#000',height:height? height :55, flexDirection:'row',gap:5, alignItems:"center" }]}
   >
     {crossIcon &&
     <Ionicons name='close-circle-outline' color={Color.white} size={25} />

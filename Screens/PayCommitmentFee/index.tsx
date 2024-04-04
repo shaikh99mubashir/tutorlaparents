@@ -18,7 +18,7 @@ const PayCommitmentFee = ({navigation}: any) => {
       }}>
       <Header goBack title="Commitment Fee" navigation={navigation} />
       <ScrollView showsVerticalScrollIndicator={false} nestedScrollEnabled>
-      <View style={{margin: 8}}></View> 
+        <View style={{margin: 8}}></View>
         <View
           style={{
             borderWidth: 0.8,
@@ -222,7 +222,7 @@ const PayCommitmentFee = ({navigation}: any) => {
             </Text>
           </View>
         </View>
-        <View style={{margin: 6}}></View> 
+        <View style={{margin: 6}}></View>
         <View
           style={{
             borderWidth: 0.8,
@@ -243,21 +243,18 @@ const PayCommitmentFee = ({navigation}: any) => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-              <Text
-                style={[styles.textType1, {fontSize: 20}]}>
+              <Text style={[styles.textType1, {fontSize: 20}]}>
                 Seri Jaafar
               </Text>
-              <View style={{flexDirection: 'row', alignItems: 'center', gap: 2}}>
-              <MaterialCommunityIcons
-                name="star"
-                size={20}
-                color={Color.Yellow}
-              />
-              <Text style={[styles.textType3, {fontSize: 20}]}>
-                4.4
-              </Text>
-              
-            </View>
+              <View
+                style={{flexDirection: 'row', alignItems: 'center', gap: 2}}>
+                <MaterialCommunityIcons
+                  name="star"
+                  size={20}
+                  color={Color.Yellow}
+                />
+                <Text style={[styles.textType3, {fontSize: 20}]}>4.4</Text>
+              </View>
             </View>
             <View
               style={{
@@ -265,17 +262,25 @@ const PayCommitmentFee = ({navigation}: any) => {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
               }}>
-              <Text style={[styles.textType3, {fontSize: 16, color:Color.Primary,fontFamily: 'Circular Std Book',}]}>
-              Member Since Mar 2019
-              </Text>
-              <View style={{top:-2}}>
-                <Text
+              <Text
                 style={[
                   styles.textType3,
-                  {fontSize: 16, color: Color.IronsideGrey},
+                  {
+                    fontSize: 16,
+                    color: Color.Primary,
+                    fontFamily: 'Circular Std Book',
+                  },
                 ]}>
-                (397)
+                Member Since Mar 2019
               </Text>
+              <View style={{top: -2}}>
+                <Text
+                  style={[
+                    styles.textType3,
+                    {fontSize: 16, color: Color.IronsideGrey},
+                  ]}>
+                  (397)
+                </Text>
               </View>
             </View>
           </View>
@@ -354,16 +359,29 @@ const PayCommitmentFee = ({navigation}: any) => {
             </Text>
           </View>
         </View>
-        <View style={{margin: 6}}></View> 
-        <View style={{backgroundColor:Color.Primary, borderRadius:20, padding: 20,flexDirection:"row", justifyContent:'space-between',alignItems:'center'}}>
-        <View style={{flexDirection:'row', alignItems:'center', gap:5}}>
-          <Feather name='dollar-sign' color={Color.white} size={18}/>
-          <Text style={[styles.textType3,{color:Color.white}]}>Commitment Fees</Text>
-        </View>
-          <Text style={[styles.textType1,{color:Color.white}]}>RM210</Text>
+        <View style={{margin: 6}}></View>
+        <View
+          style={{
+            backgroundColor: Color.Primary,
+            borderRadius: 20,
+            padding: 20,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
+            <Feather name="dollar-sign" color={Color.white} size={18} />
+            <Text style={[styles.textType3, {color: Color.white}]}>
+              Commitment Fees
+            </Text>
           </View>
-          <View style={{margin: 15}}></View> 
-          <CustomButton btnTitle='Pay Now' onPress={()=> navigation.navigate('PaymentGateway')}/>
+          <Text style={[styles.textType1, {color: Color.white}]}>RM210</Text>
+        </View>
+        <View style={{margin: 15}}></View>
+        <CustomButton
+          btnTitle="Pay Now"
+          onPress={() => navigation.navigate('PaymentGateway')}
+        />
       </ScrollView>
     </View>
   );

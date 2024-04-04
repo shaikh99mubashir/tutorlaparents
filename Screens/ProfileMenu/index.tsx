@@ -155,7 +155,7 @@ const ProfileMenu = ({navigation}: any) => {
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('')}
+            onPress={() => navigation.navigate('ParentProfile')}
             style={{
               flexDirection: 'row',
               gap: 10,
@@ -169,7 +169,9 @@ const ProfileMenu = ({navigation}: any) => {
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('')}
+            onPress={() => navigation.replace("Main", {
+              screen: "JobTicket",
+            })}
             style={{
               flexDirection: 'row',
               gap: 10,
@@ -183,7 +185,7 @@ const ProfileMenu = ({navigation}: any) => {
           </TouchableOpacity>
          
           <TouchableOpacity
-            onPress={() => navigation.navigate('')}
+            onPress={() => navigation.navigate('PaymentHistory')}
             activeOpacity={0.8}
             style={{
               flexDirection: 'row',
@@ -195,7 +197,7 @@ const ProfileMenu = ({navigation}: any) => {
             <Text style={[styles.textType3]}>Payment History</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate('')}
+            onPress={() => navigation.navigate('InviteFriends')}
             activeOpacity={0.8}
             style={{
               flexDirection: 'row',
@@ -284,6 +286,8 @@ const ProfileMenu = ({navigation}: any) => {
             Support
           </Text>
           <TouchableOpacity
+          onPress={() => navigation.navigate('FAQs')}
+          activeOpacity={0.9}
             style={{
               flexDirection: 'row',
               gap: 10,

@@ -30,5 +30,7 @@ export default {
     Gray78 :'#C7C7C7',
     AliceBlue:"#DCE5F2",
     star:'#F4A119',
+    YellowishOrange:'#FF9C07',
+    YellowishOrangelite:'rgba(255, 156, 7,0.20)',
     
 };

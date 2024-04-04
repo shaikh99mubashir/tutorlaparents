@@ -27,6 +27,13 @@ import AddCard from '../../Screens/AddCard/index.tsx';
 import Settings from '../../Screens/Settings/index.tsx';
 import AccountInformation from '../../Screens/AccountInformation/index.tsx';
 import ChangePassword from '../../Screens/ChangePassword/index.tsx';
+import ParentProfile from '../../Screens/ParentProfile/index.tsx';
+import PaymentHistory from '../../Screens/PaymentHistory/index.tsx';
+import InviteFriends from '../../Screens/InviteFriends/index.tsx';
+import MyReferralEarnings from '../../Screens/MyReferralEarnings/index.tsx';
+import TutorlaTermOfServices from '../../Screens/TutorlaTermOfServices/index.tsx';
+import TutorlaPrivacyStatement from '../../Screens/TutorlaPrivacyStatement/index.tsx';
+import FAQs from '../../Screens/FAQs/index.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -43,7 +50,7 @@ const MyStack = () => {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="VerifyCode" component={VerifyCode} />
         <Stack.Screen name="UpdateProfile" component={UpdateProfile} /> */}
-        <Stack.Screen name="BottomNav" component={BottomNav} />
+        {/* <Stack.Screen name="BottomNav" component={BottomNav} />
         <Stack.Screen name="StudentList" component={StudentList} />
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
         <Stack.Screen name="JobTicket" component={JobTicket} />
@@ -54,12 +61,21 @@ const MyStack = () => {
         <Stack.Screen name="PaymentGateway" component={PaymentGateway} />
         <Stack.Screen name="PaymentCongratulations" component={PaymentCongratulations} />
         <Stack.Screen name="AddCard" component={AddCard} />
-        <Stack.Screen name="Settings" component={Settings} />
+        
         <Stack.Screen name="AccountInformation" component={AccountInformation} />
-        <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="ClassSchedule" component={ClassSchedule} />
-        <Stack.Screen name="Chat" component={Chat} />
+        */}
         <Stack.Screen name="ProfileMenu" component={ProfileMenu} />
+        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="Chat" component={Chat} />
+        <Stack.Screen name="ParentProfile" component={ParentProfile} />
+        <Stack.Screen name="PaymentHistory" component={PaymentHistory} />
+        <Stack.Screen name="InviteFriends" component={InviteFriends} />
+        <Stack.Screen name="MyReferralEarnings" component={MyReferralEarnings} />
+        <Stack.Screen name="ChangePassword" component={ChangePassword} />
+        <Stack.Screen name="TutorlaTermOfServices" component={TutorlaTermOfServices} />
+        <Stack.Screen name="TutorlaPrivacyStatement" component={TutorlaPrivacyStatement} />
+        <Stack.Screen name="FAQs" component={FAQs} />
 
       </Stack.Navigator>
     </NavigationContainer>
