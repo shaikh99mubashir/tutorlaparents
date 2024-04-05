@@ -230,7 +230,7 @@ const ProfileMenu = ({navigation}: any) => {
             Students
           </Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate('')}
+            onPress={() => navigation.navigate('ClassSchedule')}
             activeOpacity={0.8}
             style={{
               flexDirection: 'row',

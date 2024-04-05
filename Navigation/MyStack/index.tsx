@@ -76,6 +76,7 @@ const MyStack = () => {
         <Stack.Screen name="TutorlaTermOfServices" component={TutorlaTermOfServices} />
         <Stack.Screen name="TutorlaPrivacyStatement" component={TutorlaPrivacyStatement} />
         <Stack.Screen name="FAQs" component={FAQs} />
+        <Stack.Screen name="ClassSchedule" component={ClassSchedule} />
 
       </Stack.Navigator>
     </NavigationContainer>

@@ -41,14 +41,16 @@ const Header = ({navigation, goBack,BackBtn,color ,title, filter, tab, addClass,
     
       <View style={{flexDirection: 'row', gap: 0, alignItems: 'center'}}>
         {BackBtn && (
-          <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding:10,paddingLeft:0}}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding:10,paddingLeft:0, }}>
             <AntDesign name="arrowleft" size={25} color={color} />
             {/* <Entypo name="chevron-left" size={25} color={'black'} /> */}
           </TouchableOpacity>
         )}
         {goBack && (
-          <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding:10,paddingLeft:0}}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding:10,paddingLeft:0,}}>
+            <View style={{left:-4}}>
             <Entypo name="chevron-left" size={25} color={'black'} />
+            </View>
           </TouchableOpacity>
         )}
         {title && <Text style={[styles.textType1,{fontFamily:'Circular Std Bold'}]}>{title}</Text>}
