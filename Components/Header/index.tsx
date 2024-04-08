@@ -5,7 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {Color} from '../../Constant';
-const Header = ({navigation, goBack,BackBtn,color ,title, filter, tab, addClass,needHelp,deleteBtn ,modalText, search, logout}: any) => {
+const Header = ({navigation, goBack,BackBtn,color ,title, filter, tab, addClass,needHelp,deleteBtn ,modalText,download, search, logout}: any) => {
   const routeToFilter = () => {
     let selectedTab = tab.filter((e: any, i: number) => {
       return e.selected;
@@ -88,6 +88,13 @@ const Header = ({navigation, goBack,BackBtn,color ,title, filter, tab, addClass,
             activeOpacity={0.8}
             onPress={() => navigation.navigate('')}>
             <Image source={require('../../Images/IconLogout.png')}/>
+          </TouchableOpacity>
+        )}
+        {download && (
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('')}>
+            <Image source={require('../../Images/Download-icon.png')}/>
           </TouchableOpacity>
         )}
         {/* {needHelp && (

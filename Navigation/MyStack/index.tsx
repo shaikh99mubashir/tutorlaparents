@@ -34,6 +34,9 @@ import MyReferralEarnings from '../../Screens/MyReferralEarnings/index.tsx';
 import TutorlaTermOfServices from '../../Screens/TutorlaTermOfServices/index.tsx';
 import TutorlaPrivacyStatement from '../../Screens/TutorlaPrivacyStatement/index.tsx';
 import FAQs from '../../Screens/FAQs/index.tsx';
+import StudentReport from '../../Screens/StudentReport/index.tsx';
+import ProgressReport from '../../Screens/ProgressReport/index.tsx';
+import CompleteClassSchedule from '../../Screens/CompleteClassSchedule/index.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -44,16 +47,16 @@ const MyStack = () => {
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
-        {/* <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
         <Stack.Screen name="GetStarted" component={GetStarted} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="VerifyCode" component={VerifyCode} />
-        <Stack.Screen name="UpdateProfile" component={UpdateProfile} /> */}
-        {/* <Stack.Screen name="BottomNav" component={BottomNav} />
-        <Stack.Screen name="StudentList" component={StudentList} />
+        <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
+        <Stack.Screen name="BottomNav" component={BottomNav} />
+        
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
-        <Stack.Screen name="JobTicket" component={JobTicket} />
+        {/* <Stack.Screen name="JobTicket" component={JobTicket} /> */}
         <Stack.Screen name="TutorRequestDetailsCompleted" component={TutorRequestDetailsCompleted} />
         <Stack.Screen name="AppliedTutorDetails" component={AppliedTutorDetails} />
         <Stack.Screen name="TutorProfile" component={TutorProfile} />
@@ -63,8 +66,7 @@ const MyStack = () => {
         <Stack.Screen name="AddCard" component={AddCard} />
         
         <Stack.Screen name="AccountInformation" component={AccountInformation} />
-        <Stack.Screen name="ClassSchedule" component={ClassSchedule} />
-        */}
+       
         <Stack.Screen name="ProfileMenu" component={ProfileMenu} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Chat" component={Chat} />
@@ -77,6 +79,10 @@ const MyStack = () => {
         <Stack.Screen name="TutorlaPrivacyStatement" component={TutorlaPrivacyStatement} />
         <Stack.Screen name="FAQs" component={FAQs} />
         <Stack.Screen name="ClassSchedule" component={ClassSchedule} />
+        <Stack.Screen name="StudentList" component={StudentList} />
+        <Stack.Screen name="StudentReport" component={StudentReport} />
+        <Stack.Screen name="ProgressReport" component={ProgressReport} />
+        <Stack.Screen name="CompleteClassSchedule" component={CompleteClassSchedule} />
 
       </Stack.Navigator>
     </NavigationContainer>

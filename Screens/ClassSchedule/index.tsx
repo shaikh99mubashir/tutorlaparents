@@ -123,21 +123,18 @@ const ClassSchedule = ({navigation}: any) => {
             flexDirection: 'row',
             alignItems: 'center',
             borderLeftColor: Color.lineColor,
-            
           }}>
-          
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => handleItemPress(item.id)}
             style={{
-              borderLeftWidth:5,
-              borderLeftColor:Color.Primary,
+              borderLeftWidth: 5,
+              borderLeftColor: Color.Primary,
               borderRadius: 6,
               marginBottom: 10,
               padding: 15,
               borderBottomColor: Color.shinyGrey,
               backgroundColor: Color.white,
-              
             }}>
             <View
               style={{
@@ -145,12 +142,11 @@ const ClassSchedule = ({navigation}: any) => {
                 justifyContent: 'space-between',
                 width: '100%',
                 borderColor: Color.shinyGrey,
-               
               }}>
               <View
                 style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
                 <Text style={[styles.textType1, {fontSize: 20}]}>
-                 {item.title}
+                  {item.title}
                 </Text>
               </View>
               <View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -177,121 +173,125 @@ const ClassSchedule = ({navigation}: any) => {
               </View>
             </View>
             {item?.mode == 'Physical' && (
-              <View style={{justifyContent:'flex-end', alignItems:'flex-end'}}>
               <View
-                style={{
-                  flexDirection: 'row',
-                  gap: 5,
-                  alignItems: 'center',
-                  marginTop: 5,
-                }}>
-                <Feather name="map-pin" size={14} color={'#003E9C'} />
-                <Text
-                  style={[styles.textType3, {color: '#003E9C', fontSize: 14}]}>
-                  Selangor, Malaysia
-                </Text>
-              </View>
+                style={{justifyContent: 'flex-end', alignItems: 'flex-end'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    gap: 5,
+                    alignItems: 'center',
+                    marginTop: 5,
+                  }}>
+                  <Feather name="map-pin" size={14} color={'#003E9C'} />
+                  <Text
+                    style={[
+                      styles.textType3,
+                      {color: '#003E9C', fontSize: 14},
+                    ]}>
+                    Selangor, Malaysia
+                  </Text>
+                </View>
               </View>
             )}
-           
+
             <View
               style={{
                 paddingVertical: 10,
               }}>
-              
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    gap: 10,
-                   
-                  }}>
-                  <FontAwesome name="user-o" size={18} color={Color.Primary} />
-                  <Text style={[styles.textType3, {}]}>
-                  Yunus Yusuf
-                  </Text>
-                </View>
-                  
-                  <View style={{margin:4}}></View>
-              
-                <View
-                  style={{ 
-                    flexDirection: 'row',
-                    gap: 10,
-                  }}>
-                  <Feather name="hash" size={18} color={Color.Primary} />
-                  <Text style={[styles.textType3, {}]}>
-                  2nd Session
-                  </Text>
-                </View>
-                
-            </View>
-
-            <View
+              <View
                 style={{
                   flexDirection: 'row',
                   gap: 10,
-                  paddingTop: 10,
-                  justifyContent:'space-between',
-               
                 }}>
-                
-                <View
-                  style={{
-                    backgroundColor: Color.PattensBlue,
-                    borderRadius: 5,
-                    alignItems:'center',
-                    justifyContent:'center',
-                    height:33
-                  }}>
-                  <View
-                    style={{
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexDirection: 'row',
-                      gap: 10,
-                      paddingHorizontal: 10,
-                      
-                    }}>
-                   <AntDesign
-                      name="clockcircleo"
-                      size={20}
-                      color={Color.Primary}
-                    />
-                    <Text style={[styles.textType3, {color: Color.Primary,fontFamily:'Circular Std Book'}]}>
-                    04:00 PM - 05:00 PM
-                    </Text>
-                  </View>
-                </View>
+                <FontAwesome name="user-o" size={18} color={Color.Primary} />
+                <Text style={[styles.textType3, {}]}>Yunus Yusuf</Text>
+              </View>
 
+              <View style={{margin: 4}}></View>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  gap: 10,
+                }}>
+                <Feather name="hash" size={18} color={Color.Primary} />
+                <Text style={[styles.textType3, {}]}>2nd Session</Text>
+              </View>
+            </View>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                gap: 10,
+                paddingTop: 10,
+                justifyContent: 'space-between',
+              }}>
+              <View
+                style={{
+                  backgroundColor: Color.PattensBlue,
+                  borderRadius: 5,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: 33,
+                }}>
                 <View
                   style={{
-                    backgroundColor: Color.PattensBlue,
-                    borderRadius: 10,
-                    alignItems:'center',
-                    justifyContent:'center',
-                    padding:10,
-                    position:'absolute',
-                    right:0,
-                    top:-20
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'row',
+                    gap: 10,
+                    paddingHorizontal: 10,
                   }}>
-                  <View
-                    style={{
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: 0,
-                      paddingHorizontal: 10,
-                      
-                    }}>
-                   
-                    <Text style={[styles.textType1, {fontFamily:'Circular Std Bold'}]}>
-                    20
-                    </Text>
-                    <Text style={[styles.textType3, {fontFamily:'Circular Std Bold'}]}>
-                      Student
-                    </Text>
-                  </View>
+                  <AntDesign
+                    name="clockcircleo"
+                    size={20}
+                    color={Color.Primary}
+                  />
+                  <Text
+                    style={[
+                      styles.textType3,
+                      {color: Color.Primary, fontFamily: 'Circular Std Book'},
+                    ]}>
+                    04:00 PM - 05:00 PM
+                  </Text>
                 </View>
               </View>
+
+              <View
+                style={{
+                  backgroundColor: Color.PattensBlue,
+                  borderRadius: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: 10,
+                  position: 'absolute',
+                  right: 0,
+                  top: -20,
+                }}>
+                <View
+                  style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 0,
+                    paddingHorizontal: 10,
+                  }}>
+                  <Text
+                    style={[
+                      styles.textType1,
+                      {fontFamily: 'Circular Std Bold'},
+                    ]}>
+                    20
+                  </Text>
+                  <Text
+                    style={[
+                      styles.textType3,
+                      {fontFamily: 'Circular Std Bold'},
+                    ]}>
+                    Student
+                  </Text>
+                </View>
+              </View>
+            </View>
           </TouchableOpacity>
         </View>
       </>
@@ -299,7 +299,7 @@ const ClassSchedule = ({navigation}: any) => {
   };
 
   const [mSDate, setMSDate] = useState(new Date());
- 
+
   const [show, setShow] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [mode, setMode] = useState<any>('date');
@@ -383,23 +383,33 @@ const ClassSchedule = ({navigation}: any) => {
           />
         </View>
         <View style={{margin: 10}}></View>
-      
-        <View style={{paddingHorizontal:20}}>
+
+        <View style={{paddingHorizontal: 20}}>
           <View>
-          <FlatList
-            data={data}
-            renderItem={renderClassScheduleData}
-            keyExtractor={item => item.id.toString()}
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
+            <FlatList
+              data={data}
+              renderItem={renderClassScheduleData}
+              keyExtractor={item => item.id.toString()}
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
             />
-            </View>
-        
-        <View style={{margin: 10}}></View>
-        <Text style={[styles.textType3,{textAlign:'center',color:Color.IronsideGrey, fontFamily: 'Circular Std Book'}]}>Check your all Scheduled Classes</Text>
-        <View style={{margin: 10}}></View>
-                  <CustomButton btnTitle='View All Schedule'/>
-        <View style={{margin: 10}}></View>
+          </View>
+
+          <View style={{margin: 10}}></View>
+          <Text
+            style={[
+              styles.textType3,
+              {
+                textAlign: 'center',
+                color: Color.IronsideGrey,
+                fontFamily: 'Circular Std Book',
+              },
+            ]}>
+            Check your all Scheduled Classes
+          </Text>
+          <View style={{margin: 10}}></View>
+          <CustomButton btnTitle="View All Schedule" onPress={()=> navigation.navigate('CompleteClassSchedule')}/>
+          <View style={{margin: 10}}></View>
         </View>
         {show && (
           <DateTimePicker

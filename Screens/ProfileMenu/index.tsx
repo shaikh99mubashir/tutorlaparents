@@ -242,7 +242,7 @@ const ProfileMenu = ({navigation}: any) => {
             <Text style={[styles.textType3]}>Student Schedule</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate('')}
+            onPress={() => navigation.navigate('StudentList')}
             style={{
               flexDirection: 'row',
               gap: 10,
@@ -253,7 +253,7 @@ const ProfileMenu = ({navigation}: any) => {
             <Text style={[styles.textType3]}>Student List</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate('')}
+            onPress={() => navigation.navigate('StudentReport')}
             activeOpacity={0.8}
             style={{
               flexDirection: 'row',

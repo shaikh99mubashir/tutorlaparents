@@ -529,33 +529,11 @@ const PaymentHistory = ({navigation}: any) => {
                   width: '98%',
                 }}
               />
-              <Text
-                style={[
-                  styles.textType1,
-                  {textAlign: 'center', fontSize: 30, lineHeight: 36},
-                ]}>
-                Ready to Find the Perfect Tutor?
-              </Text>
-              <Text
-                style={[
-                  styles.textType3,
-                  {
-                    textAlign: 'center',
-                    color: Color.IronsideGrey,
-                    fontFamily: 'Circular Std Book',
-                    marginTop: 10,
-                  },
-                ]}>
-                Create a request, and it will show up right here.
-              </Text>
+             
+             
             </View>
           </View>
-          <View style={{position: 'absolute', bottom: -190, right: 0}}>
-            <Image
-              source={require('../../Images/Add-primrary.png')}
-              resizeMode="contain"
-            />
-          </View>
+          
         </View>
       )}
     </View>
