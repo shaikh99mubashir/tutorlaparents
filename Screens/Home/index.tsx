@@ -600,6 +600,7 @@ const Home = ({navigation}: any) => {
               justifyContent: 'space-between',
             }}>
             <Text style={styles.textType2}>Tutor Attendance</Text>
+            <TouchableOpacity activeOpacity={0.8} onPress={()=> navigation.navigate('TutorClassAttendance')}>
             <Text
               style={[
                 styles.textType1,
@@ -611,6 +612,7 @@ const Home = ({navigation}: any) => {
               ]}>
               View All
             </Text>
+                </TouchableOpacity>
           </View>
           <View style={{margin: 5}}></View>
           <View>

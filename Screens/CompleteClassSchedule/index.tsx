@@ -12,11 +12,14 @@ import Header from '../../Components/Header';
 import CustomTabView from '../../Components/CustomTabView';
 import {Color} from '../../Constant';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CustomButton from '../../Components/CustomButton';
+import Entypo from 'react-native-vector-icons/Entypo';
 const CompleteClassSchedule = ({navigation}: any) => {
   const [currentTab, setCurrentTab]: any = useState([
     {
@@ -48,207 +51,378 @@ const CompleteClassSchedule = ({navigation}: any) => {
     {id: '4', title: 'Bahasa Melayu', jtuid: 'J9000321', mode: ''},
     {id: '5', title: 'English ', jtuid: 'J9000321', mode: ''},
   ];
-  const firstRoute = useCallback(() => {
-    const renderPendingPayments = ({item}: any) => {
-      return (
-        // <TouchableOpacity
-        //   activeOpacity={0.8}
-        //   style={{
-        //     borderWidth: 0.8,
-        //     borderRadius: 20,
-        //     marginBottom: 10,
-        //     padding: 20,
-        //     borderColor: Color.shinyGrey,
-        //     backgroundColor: Color.white,
-        //   }}>
-        //   <View
-        //     style={{
-        //       width: '100%',
-        //       borderColor: Color.shinyGrey,
-        //     }}>
-        //     <View
-        //       style={{
-        //         flexDirection: 'row',
-        //         justifyContent: 'space-between',
-        //         alignItems: 'center',
-        //       }}>
-        //       <Text
-        //         style={[
-        //           styles.textType1,
-        //           {
-        //             fontFamily: 'Circular Std Bold',
-        //             color: Color.Primary,
-        //           },
-        //         ]}>
-        //         RM 210.00
-        //       </Text>
-        //       <View style={{flexDirection: 'column'}}>
-        //         <View
-        //           style={{alignItems: 'flex-end', justifyContent: 'flex-end'}}>
-        //           {item.mode && (
-        //             <Text
-        //               style={[
-        //                 styles.textType3,
-        //                 {
-        //                   color:
-        //                     item.mode == 'Ongoing'
-        //                       ? Color.YellowishOrange
-        //                       : Color.Primary,
-        //                   backgroundColor:
-        //                     item.mode == 'Ongoing'
-        //                       ? Color.YellowishOrangelite
-        //                       : Color.lightPrimary,
-        //                   paddingVertical: 5,
-        //                   paddingHorizontal: 15,
-        //                   borderRadius: 30,
-        //                   textTransform: 'capitalize',
-        //                 },
-        //               ]}>
-        //               {item?.mode}
-        //             </Text>
-        //           )}
-        //         </View>
-        //       </View>
-        //     </View>
-        //     <View
-        //       style={{
-        //         justifyContent: 'space-between',
-        //         flexDirection: 'row',
-        //         alignItems: 'center',
-        //         marginTop: 15,
-        //       }}>
-        //       <View>
-        //         <Text style={[styles.textType1, {fontSize: 20}]}>
-        //           Jeffrey Lim
-        //         </Text>
-        //         <Text
-        //           style={[
-        //             styles.textType3,
-        //             {
-        //               fontFamily: 'Circular Std Book',
-        //               color: Color.IronsideGrey,
-        //               fontSize: 15,
-        //             },
-        //           ]}>
-        //           Mathematics (IGCSE)
-        //         </Text>
-        //       </View>
-        //       <View>
-        //         <Text
-        //           style={[
-        //             styles.textType3,
-        //             {
-        //               fontFamily: 'Circular Std Book',
-        //               color: Color.Dune,
-        //               fontSize: 14,
-        //               textAlign: 'right',
-        //             },
-        //           ]}>
-        //           Pending
-        //         </Text>
-        //         <Text
-        //           style={[
-        //             styles.textType3,
-        //             {
-        //               fontFamily: 'Circular Std Bold',
-        //               color: Color.Primary,
-        //               fontSize: 15,
-        //             },
-        //           ]}>
-        //           Mar 2024
-        //         </Text>
-        //       </View>
-        //     </View>
-        //   </View>
 
-        //   <View
-        //     style={{
-        //       borderWidth: 0.8,
-        //       borderColor: Color.LightPattensBlue,
-        //       marginTop: 20,
-        //     }}></View>
-        //   <View style={{margin: 8}}></View>
-        //   <View
-        //     style={{
-        //       justifyContent: 'space-between',
-        //       flexDirection: 'row',
-        //       alignItems: 'center',
-        //     }}>
-        //     <View
-        //       style={{
-        //         alignItems: 'center',
-        //         justifyContent: 'center',
-        //         flexDirection: 'row',
-        //         gap: 8,
-        //       }}>
-        //       <FontAwesome name="user-o" size={16} color={Color.Primary} />
-        //       <Text
-        //         style={[
-        //           styles.textType3,
-        //           {
-        //             fontFamily: 'Circular Std Book',
-        //             color: Color.IronsideGrey,
-        //           },
-        //         ]}>
-        //         Student
-        //       </Text>
-        //     </View>
-        //     <Text
-        //       style={[
-        //         styles.textType1,
-        //         {fontSize: 18, textTransform: 'capitalize'},
-        //       ]}>
-        //       Shahrizal Nor
-        //     </Text>
-        //   </View>
-        //   <View style={{margin:4}}></View>
-        //   <View
-        //     style={{
-        //       justifyContent: 'space-between',
-        //       flexDirection: 'row',
-        //       alignItems: 'center',
-        //     }}>
-        //     <View
-        //       style={{
-        //         alignItems: 'center',
-        //         justifyContent: 'center',
-        //         flexDirection: 'row',
-        //         gap: 5,
-        //       }}>
-        //       <Feather name="hash" size={16} color={Color.Primary} />
-        //       <Text
-        //         style={[
-        //           styles.textType3,
-        //           {
-        //             fontFamily: 'Circular Std Book',
-        //             color: Color.IronsideGrey,
-        //           },
-        //         ]}>
-        //         No. of Session
-        //       </Text>
-        //     </View>
-        //     <Text
-        //       style={[
-        //         styles.textType1,
-        //         {fontSize: 18, textTransform: 'capitalize'},
-        //       ]}>
-        //       4 Session per Month
-        //     </Text>
-        //   </View>
-        // </TouchableOpacity>
-        <></>
+  const DropDownValues = [
+    {
+      ddValue: 'All',
+    },
+    {
+      ddValue: 'Online',
+    },
+    {
+      ddValue: 'Physical',
+    },
+  ];
+  const [ddOpen, setDDOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(
+    DropDownValues[0]?.ddValue || '',
+  );
+  const closeDropdown = () => {
+    if (ddOpen) {
+      setDDOpen(false);
+    }
+  };
+  const selectedValues = (e: any) => {
+    setDDOpen(false);
+    setSelectedValue(e.ddValue);
+  };
+
+  const firstRoute = useCallback(() => {
+    const renderUpcommingClasses = ({item}: any) => {
+      return (
+        <TouchableOpacity activeOpacity={0.8} style={{marginBottom: 15}}>
+          <View
+            style={{
+              borderRadius: 20,
+              marginBottom: 0,
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+              backgroundColor: Color.white,
+            }}>
+            <View style={{margin: 4}}></View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 15,
+                width: '100%',
+              }}>
+              <Text
+                style={[
+                  styles.textType3,
+                  {
+                    fontFamily: 'Circular Std Bold',
+                    backgroundColor: Color.Primary,
+                    color: 'white',
+                    paddingHorizontal: 12,
+                    paddingVertical: 2,
+                    borderRadius: 8,
+                    textAlign: 'center',
+                  },
+                ]}>
+                J9000526
+              </Text>
+            </View>
+
+            <View style={{margin: 8}}></View>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  gap: 8,
+                }}>
+                <FontAwesome
+                  name="graduation-cap"
+                  size={16}
+                  color={Color.Primary}
+                />
+                <Text
+                  style={[
+                    styles.textType3,
+                    {
+                      fontFamily: 'Circular Std Book',
+                      color: Color.IronsideGrey,
+                      fontSize: 16,
+                    },
+                  ]}>
+                  Student
+                </Text>
+              </View>
+              <Text
+                style={[
+                  styles.textType1,
+                  {fontSize: 16, textTransform: 'capitalize'},
+                ]}>
+                Sara William
+              </Text>
+            </View>
+            <View style={{margin: 4}}></View>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  gap: 8,
+                }}>
+                <MaterialIcons name="subject" size={16} color={Color.Primary} />
+                <Text
+                  style={[
+                    styles.textType3,
+                    {
+                      fontFamily: 'Circular Std Book',
+                      color: Color.IronsideGrey,
+                      fontSize: 16,
+                    },
+                  ]}>
+                  Subject
+                </Text>
+              </View>
+              <Text
+                style={[
+                  styles.textType1,
+                  {fontSize: 16, textTransform: 'capitalize'},
+                ]}>
+                English
+              </Text>
+            </View>
+            <View style={{margin: 4}}></View>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  gap: 8,
+                }}>
+                <FontAwesome name="user-o" size={16} color={Color.Primary} />
+                <Text
+                  style={[
+                    styles.textType3,
+                    {
+                      fontFamily: 'Circular Std Book',
+                      color: Color.IronsideGrey,
+                      fontSize: 16,
+                    },
+                  ]}>
+                  Tutor
+                </Text>
+              </View>
+              <Text
+                style={[
+                  styles.textType1,
+                  {fontSize: 16, textTransform: 'capitalize'},
+                ]}>
+                Shahrizal Nor
+              </Text>
+            </View>
+            <View style={{margin: 4}}></View>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  gap: 5,
+                }}>
+                <EvilIcons name="location" size={18} color={Color.Primary} />
+                <Text
+                  style={[
+                    styles.textType3,
+                    {
+                      fontFamily: 'Circular Std Book',
+                      color: Color.IronsideGrey,
+                      fontSize: 16,
+                    },
+                  ]}>
+                  Location
+                </Text>
+              </View>
+              <Text
+                style={[
+                  styles.textType1,
+                  {fontSize: 16, textTransform: 'capitalize'},
+                ]}>
+                Kajang
+              </Text>
+            </View>
+            <View style={{margin: 10}}></View>
+            <View
+              style={{
+                flexDirection: 'row',
+                gap: 10,
+                paddingTop: 20,
+                borderTopWidth: 1,
+                borderTopColor: '#eee',
+              }}>
+              <View
+                style={{
+                  backgroundColor: Color.PattensBlue,
+                  // paddingVertical: 10,
+                  borderRadius: 5,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: 33,
+                }}>
+                <View
+                  style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'row',
+                    gap: 10,
+                    paddingHorizontal: 10,
+                  }}>
+                  <AntDesign name="calendar" size={20} color={Color.Primary} />
+                  <Text
+                    style={[
+                      styles.textType3,
+                      {color: Color.Primary, fontFamily: 'Circular Std Book'},
+                    ]}>
+                    Mar 29, 2024
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  backgroundColor: Color.PattensBlue,
+                  // paddingVertical: 10,
+                  borderRadius: 5,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: 33,
+                }}>
+                <View
+                  style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'row',
+                    gap: 10,
+                    paddingHorizontal: 10,
+                  }}>
+                  <AntDesign
+                    name="clockcircleo"
+                    size={20}
+                    color={Color.Primary}
+                  />
+                  <Text
+                    style={[
+                      styles.textType3,
+                      {color: Color.Primary, fontFamily: 'Circular Std Book'},
+                    ]}>
+                    08:30 PM
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
       );
     };
 
     return (
       <View style={{width: '100%'}}>
         <View style={{marginTop: 20}}></View>
+        <View style={{flex: 1}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+            }}>
+            <View style={{flexDirection: 'row', gap: 10}}>
+              <Text
+                style={[
+                  styles.textType3,
+                  {
+                    color: Color.IronsideGrey,
+                    fontFamily: 'Circular Std Book',
+                    fontSize: 14,
+                    position: 'relative',
+                    top: 6,
+                  },
+                ]}>
+                Sort By
+              </Text>
+              <View>
+                <TouchableOpacity
+                  onPress={() => setDDOpen(!ddOpen)}
+                  activeOpacity={0.8}
+                  style={{
+                    backgroundColor: Color.white,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    paddingVertical: 5,
+                    alignItems: 'center',
+                    borderRadius: 6,
+                    paddingHorizontal: 8,
+                    borderWidth: 1,
+                    borderColor: Color.lineColor,
+                    width: 135,
+                  }}>
+                  <Text style={[styles.textType3, {fontSize: 14}]}>
+                    {selectedValue}
+                  </Text>
+                  {ddOpen ? (
+                    <Feather name="chevron-up" size={20} color={Color.Dune} />
+                  ) : (
+                    <Feather name="chevron-down" size={20} color={Color.Dune} />
+                  )}
+                </TouchableOpacity>
+                {ddOpen ? (
+                  <View
+                    style={{
+                      backgroundColor: Color.white,
+                      borderRadius: 6,
+                      paddingHorizontal: 20,
+                      paddingTop: 15,
+                      marginTop: 3,
+                      zIndex: 999,
+                      position: 'absolute',
+                      top: 32,
+                      width: 135,
+                      elevation: 2,
+                    }}>
+                    {DropDownValues &&
+                      DropDownValues.map((e: any, i: number) => {
+                        return (
+                          <TouchableOpacity
+                            key={i}
+                            onPress={() => selectedValues(e)}>
+                            <Text
+                              style={[
+                                styles.textType3,
+                                {fontSize: 14, paddingBottom: 16},
+                              ]}>
+                              {e.ddValue ? e.ddValue : e.ddValue[0]}
+                            </Text>
+                          </TouchableOpacity>
+                        );
+                      })}
+                  </View>
+                ) : null}
+              </View>
+            </View>
+          </View>
+        </View>
 
-        <View>
+        <View style={{marginTop: 20}}>
           <View>
             <FlatList
               data={data}
-              renderItem={renderPendingPayments}
+              renderItem={renderUpcommingClasses}
               keyExtractor={item => item.id.toString()}
               showsHorizontalScrollIndicator={false}
             />
@@ -282,203 +456,337 @@ const CompleteClassSchedule = ({navigation}: any) => {
         offer_status: 'rejected',
       },
     ];
-    
-    const renderPaidPayments = ({item}: any) => {
-      return (
-        // <TouchableOpacity
-        //   activeOpacity={0.8}
-        //   style={{
-        //     borderWidth: 0.8,
-        //     borderRadius: 20,
-        //     marginBottom: 10,
-        //     padding: 20,
-        //     borderColor: Color.shinyGrey,
-        //     backgroundColor: Color.white,
-        //   }}>
-        //   <View
-        //     style={{
-        //       width: '100%',
-        //       borderColor: Color.shinyGrey,
-        //     }}>
-        //     <View
-        //       style={{
-        //         flexDirection: 'row',
-        //         justifyContent: 'space-between',
-        //         alignItems: 'center',
-        //       }}>
-        //       <Text
-        //         style={[
-        //           styles.textType1,
-        //           {
-        //             fontFamily: 'Circular Std Bold',
-        //             color: Color.Primary,
-        //           },
-        //         ]}>
-        //         RM 210.00
-        //       </Text>
-        //       <View style={{flexDirection: 'column'}}>
-        //         <View
-        //           style={{alignItems: 'flex-end', justifyContent: 'flex-end'}}>
-        //           {item.mode && (
-        //             <Text
-        //               style={[
-        //                 styles.textType3,
-        //                 {
-        //                   color:
-        //                     item.mode == 'Ongoing'
-        //                       ? Color.YellowishOrange
-        //                       : Color.Primary,
-        //                   backgroundColor:
-        //                     item.mode == 'Ongoing'
-        //                       ? Color.YellowishOrangelite
-        //                       : Color.lightPrimary,
-        //                   paddingVertical: 5,
-        //                   paddingHorizontal: 15,
-        //                   borderRadius: 30,
-        //                   textTransform: 'capitalize',
-        //                 },
-        //               ]}>
-        //               {item?.mode}
-        //             </Text>
-        //           )}
-        //         </View>
-        //       </View>
-        //     </View>
-        //     <View
-        //       style={{
-        //         justifyContent: 'space-between',
-        //         flexDirection: 'row',
-        //         alignItems: 'center',
-        //         marginTop: 15,
-        //       }}>
-        //       <View>
-        //         <Text style={[styles.textType1, {fontSize: 20}]}>
-        //           Jeffrey Lim
-        //         </Text>
-        //         <Text
-        //           style={[
-        //             styles.textType3,
-        //             {
-        //               fontFamily: 'Circular Std Book',
-        //               color: Color.IronsideGrey,
-        //               fontSize: 15,
-        //             },
-        //           ]}>
-        //           Mathematics (IGCSE)
-        //         </Text>
-        //       </View>
-        //       <View>
-        //         <Text
-        //           style={[
-        //             styles.textType3,
-        //             {
-        //               fontFamily: 'Circular Std Book',
-        //               color: Color.Dune,
-        //               fontSize: 14,
-        //               textAlign: 'right',
-        //             },
-        //           ]}>
-        //           Pending
-        //         </Text>
-        //         <Text
-        //           style={[
-        //             styles.textType3,
-        //             {
-        //               fontFamily: 'Circular Std Bold',
-        //               color: Color.Primary,
-        //               fontSize: 15,
-        //             },
-        //           ]}>
-        //           Mar 2024
-        //         </Text>
-        //       </View>
-        //     </View>
-        //   </View>
 
-        //   <View
-        //     style={{
-        //       borderWidth: 0.8,
-        //       borderColor: Color.LightPattensBlue,
-        //       marginTop: 20,
-        //     }}></View>
-        //   <View style={{margin: 8}}></View>
-        //   <View
-        //     style={{
-        //       justifyContent: 'space-between',
-        //       flexDirection: 'row',
-        //       alignItems: 'center',
-        //     }}>
-        //     <View
-        //       style={{
-        //         alignItems: 'center',
-        //         justifyContent: 'center',
-        //         flexDirection: 'row',
-        //         gap: 8,
-        //       }}>
-        //       <FontAwesome name="user-o" size={16} color={Color.Primary} />
-        //       <Text
-        //         style={[
-        //           styles.textType3,
-        //           {
-        //             fontFamily: 'Circular Std Book',
-        //             color: Color.IronsideGrey,
-        //           },
-        //         ]}>
-        //         Student
-        //       </Text>
-        //     </View>
-        //     <Text
-        //       style={[
-        //         styles.textType1,
-        //         {fontSize: 18, textTransform: 'capitalize'},
-        //       ]}>
-        //       Shahrizal Nor
-        //     </Text>
-        //   </View>
-        //   <View style={{margin:4}}></View>
-        //   <View
-        //     style={{
-        //       justifyContent: 'space-between',
-        //       flexDirection: 'row',
-        //       alignItems: 'center',
-        //     }}>
-        //     <View
-        //       style={{
-        //         alignItems: 'center',
-        //         justifyContent: 'center',
-        //         flexDirection: 'row',
-        //         gap: 5,
-        //       }}>
-        //       <Feather name="hash" size={16} color={Color.Primary} />
-        //       <Text
-        //         style={[
-        //           styles.textType3,
-        //           {
-        //             fontFamily: 'Circular Std Book',
-        //             color: Color.IronsideGrey,
-        //           },
-        //         ]}>
-        //         No. of Session
-        //       </Text>
-        //     </View>
-        //     <Text
-        //       style={[
-        //         styles.textType1,
-        //         {fontSize: 18, textTransform: 'capitalize'},
-        //       ]}>
-        //       4 Session per Month
-        //     </Text>
-        //   </View>
-        // </TouchableOpacity>
-        <></>
+    const renderPastClasses = ({item}: any) => {
+      return (
+       < TouchableOpacity activeOpacity={0.8} style={{marginBottom: 15}}>
+          <View
+            style={{
+              borderRadius: 20,
+              marginBottom: 0,
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+              backgroundColor: Color.white,
+            }}>
+            <View style={{margin: 4}}></View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 15,
+                width: '100%',
+              }}>
+              <Text
+                style={[
+                  styles.textType3,
+                  {
+                    fontFamily: 'Circular Std Bold',
+                    backgroundColor: Color.Primary,
+                    color: 'white',
+                    paddingHorizontal: 12,
+                    paddingVertical: 2,
+                    borderRadius: 8,
+                    textAlign: 'center',
+                  },
+                ]}>
+                J9000526
+              </Text>
+            </View>
+
+            <View style={{margin: 8}}></View>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  gap: 8,
+                }}>
+                <FontAwesome
+                  name="graduation-cap"
+                  size={16}
+                  color={Color.Primary}
+                />
+                <Text
+                  style={[
+                    styles.textType3,
+                    {
+                      fontFamily: 'Circular Std Book',
+                      color: Color.IronsideGrey,
+                      fontSize: 16,
+                    },
+                  ]}>
+                  Student
+                </Text>
+              </View>
+              <Text
+                style={[
+                  styles.textType1,
+                  {fontSize: 16, textTransform: 'capitalize'},
+                ]}>
+                Sara William
+              </Text>
+            </View>
+            <View style={{margin: 4}}></View>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  gap: 8,
+                }}>
+                <MaterialIcons name="subject" size={16} color={Color.Primary} />
+                <Text
+                  style={[
+                    styles.textType3,
+                    {
+                      fontFamily: 'Circular Std Book',
+                      color: Color.IronsideGrey,
+                      fontSize: 16,
+                    },
+                  ]}>
+                  Subject
+                </Text>
+              </View>
+              <Text
+                style={[
+                  styles.textType1,
+                  {fontSize: 16, textTransform: 'capitalize'},
+                ]}>
+                English
+              </Text>
+            </View>
+            <View style={{margin: 4}}></View>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  gap: 8,
+                }}>
+                <FontAwesome name="user-o" size={16} color={Color.Primary} />
+                <Text
+                  style={[
+                    styles.textType3,
+                    {
+                      fontFamily: 'Circular Std Book',
+                      color: Color.IronsideGrey,
+                      fontSize: 16,
+                    },
+                  ]}>
+                  Tutor
+                </Text>
+              </View>
+              <Text
+                style={[
+                  styles.textType1,
+                  {fontSize: 16, textTransform: 'capitalize'},
+                ]}>
+                Shahrizal Nor
+              </Text>
+            </View>
+            <View style={{margin: 4}}></View>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  gap: 5,
+                }}>
+                <EvilIcons name="location" size={18} color={Color.Primary} />
+                <Text
+                  style={[
+                    styles.textType3,
+                    {
+                      fontFamily: 'Circular Std Book',
+                      color: Color.IronsideGrey,
+                      fontSize: 16,
+                    },
+                  ]}>
+                  Location
+                </Text>
+              </View>
+              <Text
+                style={[
+                  styles.textType1,
+                  {fontSize: 16, textTransform: 'capitalize'},
+                ]}>
+                Kajang
+              </Text>
+            </View>
+            <View style={{margin: 10}}></View>
+           
+            <View style={{paddingTop: 20,
+                borderTopWidth: 1,
+                borderTopColor: Color.lineColor,}}></View>
+                 <Text style={[styles.textType3,{fontSize:13, color:Color.DustyGrey}]}>Posted:</Text>
+                 <View style={{margin: 3}}></View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent:'space-between'
+              }}>
+                
+              <View
+                style={{
+                  backgroundColor: Color.PattensBlue,
+                  // paddingVertical: 10,
+                  borderRadius: 5,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: 33,
+                }}>
+                <View
+                  style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'row',
+                    gap: 10,
+                    paddingHorizontal: 10,
+                  }}>
+                  <AntDesign name="calendar" size={20} color={Color.Primary} />
+                  <Text
+                    style={[
+                      styles.textType3,
+                      {color: Color.Primary, fontFamily: 'Circular Std Book'},
+                    ]}>
+                    Mar 29, 2024
+                  </Text>
+                </View>
+              </View>
+              <View
+            style={{
+              backgroundColor: Color.SmaltBlue ,
+              padding: 8,
+              borderRadius: 50,
+              width: 100,
+              alignItems: 'center',
+              justifyContent:'center',
+              flexDirection:'row'
+            }}>
+            <Text style={{ color: Color.white, fontFamily: 'Circular Std Book',textAlign:"center" ,paddingRight:10}}>Report</Text>
+            <AntDesign name='arrowright' color={Color.white} size={18}/>
+          </View>
+            </View>
+          </View>
+        </TouchableOpacity>
       );
     };
     return (
       <View style={{marginTop: 15, width: '100%'}}>
+        <View style={{flex: 1}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+            }}>
+            <View style={{flexDirection: 'row', gap: 10}}>
+              <Text
+                style={[
+                  styles.textType3,
+                  {
+                    color: Color.IronsideGrey,
+                    fontFamily: 'Circular Std Book',
+                    fontSize: 14,
+                    position: 'relative',
+                    top: 6,
+                  },
+                ]}>
+                Sort By
+              </Text>
+              <View>
+                <TouchableOpacity
+                  onPress={() => setDDOpen(!ddOpen)}
+                  activeOpacity={0.8}
+                  style={{
+                    backgroundColor: Color.white,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    paddingVertical: 5,
+                    alignItems: 'center',
+                    borderRadius: 6,
+                    paddingHorizontal: 8,
+                    borderWidth: 1,
+                    borderColor: Color.lineColor,
+                    width: 135,
+                  }}>
+                  <Text style={[styles.textType3, {fontSize: 14}]}>
+                    {selectedValue}
+                  </Text>
+                  {ddOpen ? (
+                    <Feather name="chevron-up" size={20} color={Color.Dune} />
+                  ) : (
+                    <Feather name="chevron-down" size={20} color={Color.Dune} />
+                  )}
+                </TouchableOpacity>
+                {ddOpen ? (
+                  <View
+                    style={{
+                      backgroundColor: Color.white,
+                      borderRadius: 6,
+                      paddingHorizontal: 20,
+                      paddingTop: 15,
+                      marginTop: 3,
+                      zIndex: 999,
+                      position: 'absolute',
+                      top: 32,
+                      width: 135,
+                      elevation: 2,
+                    }}>
+                    {DropDownValues &&
+                      DropDownValues.map((e: any, i: number) => {
+                        return (
+                          <TouchableOpacity
+                            key={i}
+                            onPress={() => selectedValues(e)}>
+                            <Text
+                              style={[
+                                styles.textType3,
+                                {fontSize: 14, paddingBottom: 16},
+                              ]}>
+                              {e.ddValue ? e.ddValue : e.ddValue[0]}
+                            </Text>
+                          </TouchableOpacity>
+                        );
+                      })}
+                  </View>
+                ) : null}
+              </View>
+            </View>
+          </View>
+        </View>
+
+        <View style={{marginTop: 20}}></View>
+
         <View>
           <FlatList
             data={data}
-            renderItem={renderPaidPayments}
+            renderItem={renderPastClasses}
             keyExtractor={item => item.id.toString()}
             showsHorizontalScrollIndicator={false}
           />
@@ -531,11 +839,8 @@ const CompleteClassSchedule = ({navigation}: any) => {
                   width: '98%',
                 }}
               />
-              
-              
             </View>
           </View>
-         
         </View>
       )}
     </View>

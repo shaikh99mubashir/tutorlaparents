@@ -37,6 +37,7 @@ import FAQs from '../../Screens/FAQs/index.tsx';
 import StudentReport from '../../Screens/StudentReport/index.tsx';
 import ProgressReport from '../../Screens/ProgressReport/index.tsx';
 import CompleteClassSchedule from '../../Screens/CompleteClassSchedule/index.tsx';
+import TutorClassAttendance from '../../Screens/TutorClassAttendance/index.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -54,9 +55,7 @@ const MyStack = () => {
         <Stack.Screen name="VerifyCode" component={VerifyCode} />
         <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
         <Stack.Screen name="BottomNav" component={BottomNav} />
-        
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
-        {/* <Stack.Screen name="JobTicket" component={JobTicket} /> */}
         <Stack.Screen name="TutorRequestDetailsCompleted" component={TutorRequestDetailsCompleted} />
         <Stack.Screen name="AppliedTutorDetails" component={AppliedTutorDetails} />
         <Stack.Screen name="TutorProfile" component={TutorProfile} />
@@ -83,6 +82,7 @@ const MyStack = () => {
         <Stack.Screen name="StudentReport" component={StudentReport} />
         <Stack.Screen name="ProgressReport" component={ProgressReport} />
         <Stack.Screen name="CompleteClassSchedule" component={CompleteClassSchedule} />
+        <Stack.Screen name="TutorClassAttendance" component={TutorClassAttendance} />
 
       </Stack.Navigator>
     </NavigationContainer>
