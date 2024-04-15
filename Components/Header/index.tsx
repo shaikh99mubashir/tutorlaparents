@@ -53,7 +53,7 @@ const Header = ({navigation, goBack,BackBtn,color ,title, filter, tab, addClass,
             </View>
           </TouchableOpacity>
         )}
-        {title && <Text style={[styles.textType1,{fontFamily:'Circular Std Bold'}]}>{title}</Text>}
+        {title && <Text style={[styles.textType1,{fontFamily:'Circular Std Bold'}]}>{title.length > 23 ?`${ title.slice(0,20)}...` : title}</Text>}
       </View>
       {filter && (
       <View

@@ -56,7 +56,7 @@ const MyStack = () => {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="VerifyCode" component={VerifyCode} />
         <Stack.Screen name="UpdateProfile" component={UpdateProfile} /> */}
-        <Stack.Screen name="BottomNav" component={BottomNav} />
+        {/* <Stack.Screen name="BottomNav" component={BottomNav} />
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
         <Stack.Screen name="TutorRequestDetailsCompleted" component={TutorRequestDetailsCompleted} />
         <Stack.Screen name="AppliedTutorDetails" component={AppliedTutorDetails} />
@@ -82,7 +82,7 @@ const MyStack = () => {
         <Stack.Screen name="StudentReport" component={StudentReport} />
         <Stack.Screen name="ProgressReport" component={ProgressReport} />
         <Stack.Screen name="CompleteClassSchedule" component={CompleteClassSchedule} />
-        <Stack.Screen name="TutorClassAttendance" component={TutorClassAttendance} />
+        <Stack.Screen name="TutorClassAttendance" component={TutorClassAttendance} /> */}
         <Stack.Screen name="LatestBlog" component={LatestBlog} />
         <Stack.Screen name="BlogSingleDetails" component={BlogSingleDetails} />
 
