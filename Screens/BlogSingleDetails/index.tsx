@@ -7,7 +7,6 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 const BlogSingleDetails = ({navigation, route}: any) => {
   const blog = route.params;
-  console.log('blog', blog);
 
   return (
     <View
@@ -21,7 +20,7 @@ const BlogSingleDetails = ({navigation, route}: any) => {
         <Image
           source={require('../../Images/Banner.png')}
           resizeMode="cover"
-          style={{borderRadius: 16, width: '98%', alignSelf: 'center'}}
+          style={{borderRadius: 16, width: '100%', alignSelf: 'center'}}
         />
 
         <View style={{margin: 5}} />
