@@ -99,6 +99,7 @@ const LatestBlog = ({navigation}: any) => {
             keyExtractor={item => item.id.toString()}
             horizontal
             showsHorizontalScrollIndicator={false}
+            nestedScrollEnabled
           />
         </View>
 
