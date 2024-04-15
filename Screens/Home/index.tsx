@@ -551,7 +551,10 @@ const Home = ({navigation}: any) => {
 
           <CustomButton btnTitle="Create Tutor Request" />
           <View style={{margin: 5}}></View>
-          <CustomButton btnTitle="Student List" onPress={()=> navigation.navigate('StudentList')}/>
+          <CustomButton
+            btnTitle="Student List"
+            onPress={() => navigation.navigate('StudentList')}
+          />
           <View style={{margin: 15}}></View>
           <Text style={styles.textType2}>Class Reminder</Text>
           <View style={{margin: 5}}></View>
@@ -600,19 +603,21 @@ const Home = ({navigation}: any) => {
               justifyContent: 'space-between',
             }}>
             <Text style={styles.textType2}>Tutor Attendance</Text>
-            <TouchableOpacity activeOpacity={0.8} onPress={()=> navigation.navigate('TutorClassAttendance')}>
-            <Text
-              style={[
-                styles.textType1,
-                {
-                  color: Color.BrightBlue,
-                  fontSize: 16,
-                  fontFamily: 'Circular Std Medium',
-                },
-              ]}>
-              View All
-            </Text>
-                </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate('TutorClassAttendance')}>
+              <Text
+                style={[
+                  styles.textType1,
+                  {
+                    color: Color.BrightBlue,
+                    fontSize: 16,
+                    fontFamily: 'Circular Std Medium',
+                  },
+                ]}>
+                View All
+              </Text>
+            </TouchableOpacity>
           </View>
           <View style={{margin: 5}}></View>
           <View>
@@ -633,7 +638,7 @@ const Home = ({navigation}: any) => {
                 uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
               }}
               style={styles.video}
-              // controls={true}
+              controls={true}
               resizeMode="contain"
               posterResizeMode="cover"
               paused={true}
@@ -660,19 +665,22 @@ const Home = ({navigation}: any) => {
                   justifyContent: 'space-between',
                 }}>
                 <Text style={styles.textType2}>Latest News</Text>
-                <Text
-                  style={[
-                    styles.textType1,
-                    {
-                      color: Color.BrightBlue,
-                      fontSize: 16,
-                      fontFamily: 'Circular Std Medium',
-                    },
-                  ]}>
-                  View All
-                </Text>
+                <TouchableOpacity onPress={()=> navigation.navigate('LatestBlog')}>
+                  <Text
+                    style={[
+                      styles.textType1,
+                      {
+                        color: Color.BrightBlue,
+                        fontSize: 16,
+                        fontFamily: 'Circular Std Medium',
+                      },
+                    ]}>
+                    View All
+                  </Text>
+                </TouchableOpacity>
               </View>
               <View style={{margin: 2}}></View>
+              <View>
               <FlatList
                 data={LatestNewsArray}
                 keyExtractor={item => item.id}
@@ -680,6 +688,7 @@ const Home = ({navigation}: any) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
               />
+              </View>
             </View>
           </View>
         </View>

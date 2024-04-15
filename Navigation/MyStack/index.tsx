@@ -38,6 +38,8 @@ import StudentReport from '../../Screens/StudentReport/index.tsx';
 import ProgressReport from '../../Screens/ProgressReport/index.tsx';
 import CompleteClassSchedule from '../../Screens/CompleteClassSchedule/index.tsx';
 import TutorClassAttendance from '../../Screens/TutorClassAttendance/index.tsx';
+import LatestBlog from '../../Screens/LatestBlog/index.tsx';
+import BlogSingleDetails from '../../Screens/BlogSingleDetails/index.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -48,12 +50,12 @@ const MyStack = () => {
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
-        <Stack.Screen name="Splash" component={Splash} />
+        {/* <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
         <Stack.Screen name="GetStarted" component={GetStarted} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="VerifyCode" component={VerifyCode} />
-        <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
+        <Stack.Screen name="UpdateProfile" component={UpdateProfile} /> */}
         <Stack.Screen name="BottomNav" component={BottomNav} />
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
         <Stack.Screen name="TutorRequestDetailsCompleted" component={TutorRequestDetailsCompleted} />
@@ -63,9 +65,7 @@ const MyStack = () => {
         <Stack.Screen name="PaymentGateway" component={PaymentGateway} />
         <Stack.Screen name="PaymentCongratulations" component={PaymentCongratulations} />
         <Stack.Screen name="AddCard" component={AddCard} />
-        
         <Stack.Screen name="AccountInformation" component={AccountInformation} />
-       
         <Stack.Screen name="ProfileMenu" component={ProfileMenu} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Chat" component={Chat} />
@@ -83,6 +83,8 @@ const MyStack = () => {
         <Stack.Screen name="ProgressReport" component={ProgressReport} />
         <Stack.Screen name="CompleteClassSchedule" component={CompleteClassSchedule} />
         <Stack.Screen name="TutorClassAttendance" component={TutorClassAttendance} />
+        <Stack.Screen name="LatestBlog" component={LatestBlog} />
+        <Stack.Screen name="BlogSingleDetails" component={BlogSingleDetails} />
 
       </Stack.Navigator>
     </NavigationContainer>
