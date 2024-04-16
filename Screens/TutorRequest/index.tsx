@@ -22,16 +22,28 @@ const TutorRequest = ({navigation}: any) => {
   const [selectedState, setSelectedState] = useState('');
   const state = [
     {
+      id:1,
       subject: 'Sara William',
+      sn:'Dyscalculia',
+      gender:'female',
     },
     {
+      id:1,
       subject: 'Nurulain Kassim',
+      sn:'Dyscalculia',
+      gender:'female',
     },
     {
+      id:3,
       subject: 'Nurulain ',
+      sn:'Dyscalculia',
+      gender:'female',
     },
     {
+      id:4,
       subject: 'Sara',
+      sn:'Dyscalculia',
+      gender:'female',
     },
   ];
 
@@ -45,16 +57,18 @@ const TutorRequest = ({navigation}: any) => {
     }
   };
 
+  console.log("selectedState",selectedState);
+  const [selectedStates, setSelectedStates] = useState<string[]>(Array.from({ length: count }, () => ''));
   const renderDropDowns = () => {
     const dropDowns = [];
     for (let i = 0; i < count; i++) {
       dropDowns.push(
         <CustomDropDown
           key={i}
-          setSelectedSubject={(value: string) => setSelectedState(value)}
-          selectedSubject={selectedState}
+          setSelectedSubject={(value: string) => handleSelectedSubject(value, i)}
+          selectedSubject={selectedStates[i]}
           ddTitle={`Select Student ${i + 1}`}
-          dropdownPlace={'Select Student'}
+          dropdownPlace={`Select Student ${i + 1}`}
           subject={state}
           categoryShow={'subject'}
         />,
@@ -62,6 +76,12 @@ const TutorRequest = ({navigation}: any) => {
     }
     return dropDowns;
   }
+
+  const handleSelectedSubject = (value: string, index: number) => {
+    const updatedStates = [...selectedStates];
+    updatedStates[index] = value;
+    setSelectedStates(updatedStates);
+  };
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -212,7 +232,7 @@ const TutorRequest = ({navigation}: any) => {
         </View>
       </View>
       <View style={{marginBottom:30}}>
-        <CustomButton btnTitle='Next'/>
+        <CustomButton btnTitle='Next' onPress={()=> navigation.navigate('TutorRequestForm2')}/>
       </View>
     </ScrollView>
   );

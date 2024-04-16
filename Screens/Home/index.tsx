@@ -549,7 +549,9 @@ const Home = ({navigation}: any) => {
             />
           </View>
 
-          <CustomButton btnTitle="Create Tutor Request" />
+          <CustomButton btnTitle="Create Tutor Request" 
+            onPress={() => navigation.navigate('TutorRequest')}
+          />
           <View style={{margin: 5}}></View>
           <CustomButton
             btnTitle="Student List"

@@ -9,9 +9,9 @@ import {
   ScrollView,
   ToastAndroid,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {Color} from '../../Constant';
+import { Color } from '../../Constant';
 import InputText from '../InputText';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -33,13 +33,20 @@ const CustomDropDown = (props: any) => {
     dropdownContainerStyle,
     setSelectedSubject,
     selectedSubject,
+    id
   } = props;
 
   const [selectedServicedata, setSelectedServicedata]: any = useState({});
+  const [selectedState, setSelectedState] = useState(null);
   const [serviceDD, setServiceDD] = useState(false);
-  const SelectedServices = (item: any) => {
-    setSelectedSubject(item);
+  const [selectedSubjectDetails, setSelectedSubjectDetails] = useState<any>(null);
 
+  const SelectedServices = (item: any) => {
+    console.log('item', item);
+
+    setSelectedState(item)
+    setSelectedSubject(item);
+    setSelectedSubjectDetails(item); // Update selectedSubjectDetails with the selected subject
     setServiceDD(!serviceDD);
   };
 
@@ -62,7 +69,7 @@ const CustomDropDown = (props: any) => {
   const [addNewStudent, setAddNewStudent] = useState(false);
 
   const options = ['Male', 'Female'];
-  const specialNeed =  ['Option 1', 'Option 2', 'Option 3'];
+  const specialNeed = ['Option 1', 'Option 2', 'Option 3'];
 
 
   const handleSelect = (value: any) => {
@@ -77,7 +84,7 @@ const CustomDropDown = (props: any) => {
   return (
     <View>
       <View
-        style={{overflow: 'hidden', marginHorizontal: 0, marginVertical: 0}}>
+        style={{ overflow: 'hidden', marginHorizontal: 0, marginVertical: 0 }}>
         {ddTitle && (
           <Text
             style={{
@@ -90,7 +97,7 @@ const CustomDropDown = (props: any) => {
               ...headingStyle,
             }}>
             {ddTitle} {studentCount}
-            <Text style={{color: Color.Red}}>*</Text>
+            <Text style={{ color: Color.Red }}>*</Text>
           </Text>
         )}
         <TouchableOpacity
@@ -111,7 +118,7 @@ const CustomDropDown = (props: any) => {
             ...dropdownContainerStyle,
           }}>
           {selectedServicedata &&
-          Object.keys(selectedServicedata).length > 0 ? (
+            Object.keys(selectedServicedata).length > 0 ? (
             <View
               style={{
                 flexDirection: 'row',
@@ -126,19 +133,19 @@ const CustomDropDown = (props: any) => {
                   textTransform: 'capitalize',
                 }}>
                 {selectedServicedata.complain_name &&
-                selectedServicedata.complain_name > 10
+                  selectedServicedata.complain_name > 10
                   ? selectedServicedata.complain_name.slice(0, 10)
-                  : selectedServicedata.complain_name }
+                  : selectedServicedata.complain_name}
               </Text>
               {serviceDD ? (
                 <Image
                   source={require('../../Images/up.png')}
-                  style={{width: 20, height: 20}}
+                  style={{ width: 20, height: 20 }}
                 />
               ) : (
                 <Image
                   source={require('../../Images/down.png')}
-                  style={{width: 20, height: 20}}
+                  style={{ width: 20, height: 20 }}
                 />
               )}
             </View>
@@ -158,10 +165,10 @@ const CustomDropDown = (props: any) => {
                 }}>
                 {selectedSubject
                   ? selectedSubject?.subject
-                  : 
+                  :
                   addNewStudent ? " Add New Student" :
-                  
-                  dropdownPlace ?? ddTitle}
+
+                    dropdownPlace ?? ddTitle}
               </Text>
               {serviceDD ? (
                 <AntDesign name="up" size={20} color={'black'} />
@@ -178,21 +185,46 @@ const CustomDropDown = (props: any) => {
           style={{
             borderRadius: 15,
             borderColor: Color.DustyGrey,
-            marginVertical: 5,
-            backgroundColor: Color.white,
-            paddingVertical: !serviceDD ? 0 : 15,
+            marginVertical: 10,
+            backgroundColor: selectedSubjectDetails ? '#e6e6e6' :Color.white,
+            // paddingVertical: !serviceDD ? 0 : 15,
             paddingHorizontal: 10,
           }}>
           <ScrollView
-            style={{maxHeight: 170}}
+            style={{ maxHeight: 170 }}
             showsVerticalScrollIndicator={false}
             nestedScrollEnabled={true}>
-            {serviceDD == true && (
-              <View>
+
+            {serviceDD == true && selectedSubjectDetails ?
+              <View style={{ padding: 10, paddingVertical: !serviceDD ? 0 : 15, }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <Image source={require('../../Images/usericonc.png')} />
+                <Text style={[styles.textType2, { fontSize: 20 }]}>{`${selectedSubjectDetails.subject}`}</Text>
+              </View>
+              <View style={{ margin: 10 }} />
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  <Image source={require('../../Images/gendericon.png')} />
+                  <Text style={[styles.textType1, { color: Color.IronsideGrey }]}>Gender</Text>
+                </View>
+                <Text style={[styles.textType1, { textTransform: 'capitalize' }]}>{selectedSubjectDetails.gender}</Text>
+              </View>
+              <View style={{ margin: 10 }} />
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  <AntDesign name="copy1" size={20} color={Color.Primary} />
+                  <Text style={[styles.textType1, { color: Color.IronsideGrey }]}>Special Need</Text>
+                </View>
+                <Text style={[styles.textType1, { textTransform: 'capitalize' }]}>{selectedSubjectDetails.sn}</Text>
+              </View>
+            </View>
+            : addNewStudent ? null :
+            (
+              <>
                 <TouchableOpacity
-                onPress={()=>handelAddNewStudentPress()}
+                  onPress={() => handelAddNewStudentPress()}
                   activeOpacity={0.8}
-                  style={{paddingHorizontal: 10, paddingVertical: 15}}>
+                  style={{ paddingHorizontal: 10, paddingVertical: 15 }}>
                   <Text style={styles.textType1}>Add New Student</Text>
                 </TouchableOpacity>
                 {subject && subject.length > 0 && (
@@ -202,7 +234,7 @@ const CustomDropDown = (props: any) => {
                       paddingBottom: 15,
                       paddingTop: 5,
                     }}>
-                    <Text style={[styles.textType1, {color: Color.Gray78}]}>
+                    <Text style={[styles.textType1, { color: Color.Gray78 }]}>
                       Select Existing Student
                     </Text>
                   </View>
@@ -229,12 +261,49 @@ const CustomDropDown = (props: any) => {
                 )}
                 {searchData && searchData.length > 0
                   ? Array.from(
-                      new Set(
-                        searchData &&
-                          searchData.map((item: any) => item?.subject),
-                      ),
-                    )
-                      .map((e: any, i: number) => {
+                    new Set(
+                      searchData &&
+                      searchData.map((item: any) => item?.subject),
+                    ),
+                  )
+                    .map((e: any, i: number) => {
+                      return (
+                        <TouchableOpacity
+                          onPress={() =>
+                            SelectedServices(
+                              subject.find(
+                                (item: any) => `${item?.subject}` === e,
+                              ),
+                            )
+                          }
+                          key={i}
+                          style={{
+                            flexDirection: 'row',
+                            paddingHorizontal: 10,
+                            marginVertical: 5,
+                            gap: 10,
+                            borderBottomWidth: 1,
+                            borderBottomColor: 'lightgrey',
+                          }}>
+                          <Text
+                            style={{
+                              fontFamily: 'Circular Std Book',
+                              fontSize: 18,
+                              textTransform: 'capitalize',
+                            }}>
+                            {e ?? selectedSubject}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    })
+                    .filter(Boolean)
+                  : Array.from(
+                    new Set(
+                      subject && subject.map((item: any) => item?.subject),
+                    ),
+                  )
+                    .map((e: any, i: number) => {
+                      if (i < 5) {
                         return (
                           <TouchableOpacity
                             onPress={() =>
@@ -247,14 +316,14 @@ const CustomDropDown = (props: any) => {
                             key={i}
                             style={{
                               flexDirection: 'row',
-                              paddingHorizontal: 10,
-                              marginVertical: 5,
+                              marginHorizontal: 35,
+                              marginVertical: 10,
                               gap: 10,
-                              borderBottomWidth: 1,
-                              borderBottomColor: 'lightgrey',
+                              // paddingBottom: 10,
                             }}>
                             <Text
                               style={{
+                                color: Color.Gray78,
                                 fontFamily: 'Circular Std Book',
                                 fontSize: 18,
                                 textTransform: 'capitalize',
@@ -263,114 +332,80 @@ const CustomDropDown = (props: any) => {
                             </Text>
                           </TouchableOpacity>
                         );
-                      })
-                      .filter(Boolean)
-                  : Array.from(
-                      new Set(
-                        subject && subject.map((item: any) => item?.subject),
-                      ),
-                    )
-                      .map((e: any, i: number) => {
-                        if (i < 5) {
-                          return (
-                            <TouchableOpacity
-                              onPress={() =>
-                                SelectedServices(
-                                  subject.find(
-                                    (item: any) => `${item?.subject}` === e,
-                                  ),
-                                )
-                              }
-                              key={i}
-                              style={{
-                                flexDirection: 'row',
-                                marginHorizontal: 35,
-                                marginVertical: 10,
-                                gap: 10,
-                                // paddingBottom: 10,
-                              }}>
-                              <Text
-                                style={{
-                                  color: Color.Gray78,
-                                  fontFamily: 'Circular Std Book',
-                                  fontSize: 18,
-                                  textTransform: 'capitalize',
-                                }}>
-                                {e ?? selectedSubject}
-                              </Text>
-                            </TouchableOpacity>
-                          );
-                        }
-                      })
-                      .filter(Boolean)}
-              </View>
-            )}
+                      }
+                    })
+                    .filter(Boolean)}
+              </>
+
+            )
+            }
+
           </ScrollView>
         </View>
       )}
       {addNewStudent &&
-      <>
-      <Text style={[styles.textType2, {fontSize: 20}]}>Add New Student</Text>
-      <View style={{margin: 5}}></View>
-      <InputText placeholder="Full Name" label="Full Name" Required />
-      <View style={{margin: 5}}></View>
-      <Text style={styles.label}>
-        Date of Birth <Text style={{color: Color.Red}}>*</Text>
-      </Text>
-      <View style={{margin: 3}}></View>
-      <View
-        style={{
-          backgroundColor: Color.white,
-          height: 60,
-          borderRadius: 12,
-          justifyContent: 'center',
-          paddingHorizontal: 20,
-        }}>
-        <TouchableOpacity
-          onPress={() => setShow(true)}
-          activeOpacity={0.8}
-          style={{
-            flexDirection: 'row',
-            gap: 15,
-            paddingVertical: 10,
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <Text style={[styles.textType1, {color: '#A9A9A9'}]}>
-            {selectedDate
-              ? selectedDate.toLocaleDateString([], {
-                  day: '2-digit',
-                  month: 'short',
-                  year: 'numeric',
-                })
-              : ' Date of Birth'}
+        <>
+          <Text style={[styles.textType2, { fontSize: 20 }]}>Add New Student</Text>
+          <View style={{ margin: 5 }}></View>
+          <InputText placeholder="Full Name" label="Full Name" Required />
+          <View style={{ margin: 5 }}></View>
+          <Text style={styles.label}>
+            Date of Birth <Text style={{ color: Color.Red }}>*</Text>
           </Text>
-          <Ionicons name="calendar-outline" color={Color.Black} size={25} />
-        </TouchableOpacity>
-      </View>
-      <View>
-        <View style={{margin: 5}}></View>
-        <View>
-          <RadioButton
-            options={options}
-            onSelect={handleSelect}
-            label="Select Gender"
-          />
-        </View>
-      </View>
-      <View>
-        <View style={{margin: 0}}></View>
-        <View>
-          <RadioButton2
-            options={specialNeed}
-            onSelect={handleSelect}
-            label="Is this student identified as having special needs?"
-            Required
-          />
-        </View>
-      </View>
-      </>
-    }
+          <View style={{ margin: 3 }}></View>
+          <View
+            style={{
+              backgroundColor: Color.white,
+              height: 60,
+              borderRadius: 12,
+              justifyContent: 'center',
+              paddingHorizontal: 20,
+            }}>
+            <TouchableOpacity
+              onPress={() => setShow(true)}
+              activeOpacity={0.8}
+              style={{
+                flexDirection: 'row',
+                gap: 15,
+                paddingVertical: 10,
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+              <Text style={[styles.textType1, { color: '#A9A9A9' }]}>
+                {selectedDate
+                  ? selectedDate.toLocaleDateString([], {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                  })
+                  : ' Date of Birth'}
+              </Text>
+              <Ionicons name="calendar-outline" color={Color.Black} size={25} />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <View style={{ margin: 5 }}></View>
+            <View>
+              <RadioButton
+                options={options}
+                onSelect={handleSelect}
+                label="Select Gender"
+              />
+            </View>
+          </View>
+          <View>
+            <View style={{ margin: 0 }}></View>
+            <View>
+              <RadioButton2
+                options={specialNeed}
+                onSelect={handleSelect}
+                label="Is this student identified as having special needs?"
+                Required
+              />
+            </View>
+          </View>
+        </>
+      }
       {show && (
         <DateTimePicker
           testID="dateTimePicker"

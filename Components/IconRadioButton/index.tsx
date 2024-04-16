@@ -41,7 +41,7 @@ const IconRadioButton = ({options, onSelect, label, Required}: any) => {
             }}
             onPress={() => handleSelect(option.name)}>
             <View style={{flexDirection: 'row', gap: 12, alignItems: 'center'}}>
-              <Image source={option.image} />
+             {option.image && <Image source={option.image} />} 
               <Text
                 style={[
                   styles.textType2,

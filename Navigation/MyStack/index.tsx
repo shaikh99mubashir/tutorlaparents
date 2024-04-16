@@ -40,6 +40,8 @@ import CompleteClassSchedule from '../../Screens/CompleteClassSchedule/index.tsx
 import TutorClassAttendance from '../../Screens/TutorClassAttendance/index.tsx';
 import LatestBlog from '../../Screens/LatestBlog/index.tsx';
 import BlogSingleDetails from '../../Screens/BlogSingleDetails/index.tsx';
+import Form2 from '../../Screens/TutorRequest/Form2.tsx';
+import Form3 from '../../Screens/TutorRequest/Form3.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -50,14 +52,16 @@ const MyStack = () => {
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
-        <Stack.Screen name="Splash" component={Splash} />
+        {/* <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
         <Stack.Screen name="GetStarted" component={GetStarted} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="VerifyCode" component={VerifyCode} />
-        <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
+        <Stack.Screen name="UpdateProfile" component={UpdateProfile} /> */}
         <Stack.Screen name="BottomNav" component={BottomNav} />
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
+        <Stack.Screen name="TutorRequestForm2" component={Form2} />
+        <Stack.Screen name="TutorRequestForm3" component={Form3} />
         <Stack.Screen name="TutorRequestDetailsCompleted" component={TutorRequestDetailsCompleted} />
         <Stack.Screen name="AppliedTutorDetails" component={AppliedTutorDetails} />
         <Stack.Screen name="TutorProfile" component={TutorProfile} />
