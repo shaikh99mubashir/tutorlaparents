@@ -13,7 +13,10 @@ import {
   import AntDesign from 'react-native-vector-icons/AntDesign';
   import { Color } from '../../Constant';
   const DefaultDropDown = (props: any) => {
-    let { ddTitle, categoryData, dataShow, searchData, searchFunc, subject, search, headingStyle, categoryShow, dropdownPlace, dropdownContainerStyle, setSelectedSubject, selectedSubject } = props
+    let { ddTitle, categoryData, dataShow, searchData,
+         searchFunc, subject, search, headingStyle, categoryShow, 
+         dropdownPlace, dropdownContainerStyle, setSelectedSubject, 
+         selectedSubject, Required } = props
   
   
   
@@ -50,7 +53,7 @@ import {
                 ...headingStyle
   
               }}>
-              {ddTitle}
+              {ddTitle} {Required && <Text style={{color: 'red'}}>*</Text>}
             </Text>
           }
           <TouchableOpacity

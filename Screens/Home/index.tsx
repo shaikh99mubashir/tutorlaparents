@@ -643,7 +643,6 @@ const Home = ({navigation}: any) => {
               controls={true}
               resizeMode="contain"
               posterResizeMode="cover"
-              paused={true}
             />
           </View>
           <View style={{margin: 15}}></View>

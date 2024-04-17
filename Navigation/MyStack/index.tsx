@@ -42,6 +42,8 @@ import LatestBlog from '../../Screens/LatestBlog/index.tsx';
 import BlogSingleDetails from '../../Screens/BlogSingleDetails/index.tsx';
 import Form2 from '../../Screens/TutorRequest/Form2.tsx';
 import Form3 from '../../Screens/TutorRequest/Form3.tsx';
+import TutorRequestAppliedStatus from '../../Screens/TutorRequest/TutorRequestAppliedStatus.tsx';
+import MessageScreen from '../../Screens/Chat/MessageScreen.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -62,6 +64,7 @@ const MyStack = () => {
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
         <Stack.Screen name="TutorRequestForm2" component={Form2} />
         <Stack.Screen name="TutorRequestForm3" component={Form3} />
+        <Stack.Screen name="TutorRequestAppliedStatus" component={TutorRequestAppliedStatus} />
         <Stack.Screen name="TutorRequestDetailsCompleted" component={TutorRequestDetailsCompleted} />
         <Stack.Screen name="AppliedTutorDetails" component={AppliedTutorDetails} />
         <Stack.Screen name="TutorProfile" component={TutorProfile} />
@@ -73,6 +76,7 @@ const MyStack = () => {
         <Stack.Screen name="ProfileMenu" component={ProfileMenu} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Chat" component={Chat} />
+        <Stack.Screen name="MessageScreen" component={MessageScreen} />
         <Stack.Screen name="ParentProfile" component={ParentProfile} />
         <Stack.Screen name="PaymentHistory" component={PaymentHistory} />
         <Stack.Screen name="InviteFriends" component={InviteFriends} />
