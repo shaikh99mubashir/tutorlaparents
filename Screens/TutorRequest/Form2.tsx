@@ -29,7 +29,8 @@ const Form2 = ({navigation}: any) => {
     },
   ];
 
-  const [selectedState, setSelectedState] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState('');
+  const [selectedSubject, setSelectedSubject] = useState('');
   const state = [
     {
       subject: 'SPM',
@@ -44,13 +45,14 @@ const Form2 = ({navigation}: any) => {
     setSelectedValue(value);
   };
   return (
+    <View   style={{
+      height: '100%',
+      backgroundColor: Color.GhostWhite,
+      paddingHorizontal: 25,
+    }}>
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{
-        height: '100%',
-        backgroundColor: Color.GhostWhite,
-        paddingHorizontal: 25,
-      }}>
+    >
       <Header goBack title="New Tutor Request" navigation={navigation} />
       <View style={{margin: 10}}></View>
       <View
@@ -199,7 +201,7 @@ const Form2 = ({navigation}: any) => {
             <View style={{flexDirection: 'row', gap: 10}}>
               <Image source={require('../../Images/classmodeiconw.png')} />
               <Text style={[styles.textType1, {color: Color.white}]}>
-                Subject
+                Student Level
               </Text>
             </View>
             <View
@@ -211,7 +213,7 @@ const Form2 = ({navigation}: any) => {
                 width: 25,
                 alignItems: 'center',
               }}>
-              {selectedValue ? (
+              {selectedLevel ? (
                 <Octicons
                   name="check-circle-fill"
                   size={25}
@@ -225,12 +227,13 @@ const Form2 = ({navigation}: any) => {
         </View>
         <View style={{padding: 20}}>
           <DefaultDropDown
-            setSelectedSubject={setSelectedState}
-            selectedSubject={selectedState}
-            ddTitle="Select Level"
+            setSelectedSubject={setSelectedLevel}
+            selectedSubject={selectedLevel}
+            ddTitle="Select Student Level"
             dropdownPlace={'Select Level'}
             subject={state}
             categoryShow={'subject'}
+            Required
           />
         </View>
       </View>
@@ -276,7 +279,7 @@ const Form2 = ({navigation}: any) => {
                 width: 25,
                 alignItems: 'center',
               }}>
-              {selectedValue ? (
+              {selectedSubject ? (
                 <Octicons
                   name="check-circle-fill"
                   size={25}
@@ -290,8 +293,8 @@ const Form2 = ({navigation}: any) => {
         </View>
         <View style={{padding: 20}}>
           <DefaultDropDown
-            setSelectedSubject={setSelectedState}
-            selectedSubject={selectedState}
+            setSelectedSubject={setSelectedSubject}
+            selectedSubject={selectedSubject}
             ddTitle="Select Subject"
             dropdownPlace={'Select Subject'}
             subject={state}
@@ -299,12 +302,16 @@ const Form2 = ({navigation}: any) => {
           />
         </View>
       </View>
-      <View style={{marginBottom: 30}}>
-      <View
+      <View style={{marginBottom: 10}}>
+      
+      </View>
+    </ScrollView>
+    <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
           gap: 8,
+          marginVertical: 30
         }}>
         <View style={{width: '48%'}}>
           <CustomButton
@@ -318,8 +325,7 @@ const Form2 = ({navigation}: any) => {
           <CustomButton btnTitle="Next" onPress={()=> navigation.navigate('TutorRequestForm3')} />
         </View>
       </View>
-      </View>
-    </ScrollView>
+    </View>
   );
 };
 

@@ -92,132 +92,7 @@ const StudentList = ({navigation}:any) => {
           paddingHorizontal: 25,
         }}>
         <Header goBack title="Student List" navigation={navigation}/>
-        {/* <View
-          style={{backgroundColor: Color.white, padding: 20, borderRadius: 16}}>
-          <View style={{flexDirection: 'row', gap: 10, alignItems: 'center'}}>
-            <Image source={require('../../Images/studenticon.png')} />
-            <Text style={[styles.textType2, {fontSize: 20}]}>
-              Nurulain Kassim
-            </Text>
-          </View>
-          <View
-            style={{
-              paddingVertical: 20,
-            }}>
-            <View
-              style={{
-                justifyContent: 'space-between',
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <View
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'row',
-                  gap: 10,
-                }}>
-                <AntDesign name="calendar" size={20} color={Color.Primary} />
-                <Text
-                  style={[
-                    styles.textType1,
-                    {
-                      fontFamily: 'Circular Std Book',
-                      color: Color.IronsideGrey,
-                      fontSize: 16,
-                    },
-                  ]}>
-                  Date of Birth
-                </Text>
-              </View>
-              <Text
-                style={[
-                  styles.textType1,
-                  {fontSize: 16, textTransform: 'capitalize'},
-                ]}>
-                13 December 2012
-              </Text>
-            </View>
-            <View
-              style={{
-                justifyContent: 'space-between',
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginTop: 10,
-              }}>
-              <View
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'row',
-                  gap: 10,
-                }}>
-                <FontAwesome
-                  name="transgender"
-                  size={18}
-                  color={Color.Primary}
-                />
-                <Text
-                  style={[
-                    styles.textType1,
-                    {
-                      fontFamily: 'Circular Std Book',
-                      color: Color.IronsideGrey,
-                      fontSize: 15,
-                    },
-                  ]}>
-                  Pref. Tutor
-                </Text>
-              </View>
-              <Text
-                style={[
-                  styles.textType1,
-                  {fontSize: 16, textTransform: 'capitalize'},
-                ]}>
-                Male
-              </Text>
-            </View>
-            <View
-              style={{
-                justifyContent: 'space-between',
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginTop: 10,
-              }}>
-              <View
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'row',
-                  gap: 15,
-                }}>
-                <MaterialIcons
-                  name="event-note"
-                  size={18}
-                  color={Color.Primary}
-                />
-                <Text
-                  style={[
-                    styles.textType1,
-                    {
-                      fontFamily: 'Circular Std Book',
-                      color: Color.IronsideGrey,
-                      fontSize: 15,
-                    },
-                  ]}>
-                  Special Needs
-                </Text>
-              </View>
-              <Text
-                style={[
-                  styles.textType1,
-                  {fontSize: 16, textTransform: 'uppercase'},
-                ]}>
-                Dyscalculia
-              </Text>
-            </View>
-          </View>
-        </View> */}
+
         {data.length > 0 ? (
           <>
             <View>
@@ -242,7 +117,8 @@ const StudentList = ({navigation}:any) => {
               scheduled!
             </Text>
             <View style={{margin: 10}}></View>
-            <CustomButton btnTitle="Request New Tutor" />
+            <CustomButton btnTitle="Request New Tutor" onPress={()=> navigation.navigate('TutorRequest')} />
+            <View style={{margin: 20}}></View>
           </>
         ) : (
             <>

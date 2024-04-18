@@ -4,6 +4,7 @@ import {Color} from '../../Constant';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Video from 'react-native-video';
 import CustomButton from '../../Components/CustomButton';
+import RNVideo from '../../Components/RNVideo';
 
 const TutorRequestAppliedStatus = ({navigation}:any) => {
   return (
@@ -44,7 +45,8 @@ const TutorRequestAppliedStatus = ({navigation}:any) => {
           Testimony’s Full Video:
         </Text>
         <View style={{margin: 10}}></View>
-        <View style={styles.container}>
+        <RNVideo/>
+        {/* <View style={styles.container}>
           <Video
             source={{
               uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
@@ -54,13 +56,13 @@ const TutorRequestAppliedStatus = ({navigation}:any) => {
             resizeMode="contain"
             posterResizeMode="cover"
           />
-        </View>
+        </View> */}
         <View style={{margin: 15}}></View>
         <CustomButton
               btnTitle="Home"
               backgroundColor={Color.WhiteSmoke}
               color={Color.Black}
-              onPress={() => navigation.navigate('BottomNav')}
+              onPress={() => navigation.replace('BottomNav')}
             />
             <View style={{margin: 10}}></View>
             <CustomButton

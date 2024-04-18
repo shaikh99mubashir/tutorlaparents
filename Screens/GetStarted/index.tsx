@@ -26,8 +26,8 @@ const GetStarted = ({navigation}: any) => {
         <Text style={styles.textType1}>Tutor within 24 Hours. </Text>
       </View>
       <View style={{margin: 10}}></View>
-      <View style={{alignItems: 'center'}}>
-        <Image source={require('../../Images/getStarted.png')} />
+      <View style={{alignItems: 'center',}}>
+        <Image source={require('../../Images/getStarted.png')} resizeMode='contain' style={{width:'85%'}}/>
       </View>
       <View style={{margin: 20}}></View>
       <View style={{marginHorizontal: 35}}>

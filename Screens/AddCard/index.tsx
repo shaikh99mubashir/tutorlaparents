@@ -11,6 +11,10 @@ const AddCard = ({navigation}: any) => {
     const toggleModal = () => {
       setModalVisible(!modalVisible);
     };
+    const handelDone = () => {
+      setModalVisible(!modalVisible);
+      navigation.navigate('PaymentGateway')
+    };
   return (
     <View
       style={{
@@ -41,7 +45,7 @@ const AddCard = ({navigation}: any) => {
       <View style={{margin: 5}}></View>
       <Text style={{ fontFamily: 'Circular Std Book',fontSize:13, lineHeight:18, color:Color.DustyGrey}}>Adding this card ensures automatic payment for{'\n'}future invoices.</Text>
       </ScrollView>
-      <View  style={{marginVertical:30}}>
+      <View  style={{marginVertical:50}}>
         <CustomButton btnTitle='Add Card' onPress={toggleModal}/>
       </View>
       <Modal
@@ -66,7 +70,7 @@ const AddCard = ({navigation}: any) => {
             <View style={{margin: 15}}></View>
             <Text style={{ fontFamily: 'Circular Std Book',fontSize:13, lineHeight:18, color:Color.DustyGrey}}>Your card has been added successfully</Text>
             <View style={{margin: 10}}></View>
-            <CustomButton btnTitle='Done' onPress={toggleModal} />
+            <CustomButton btnTitle='Done' onPress={()=>handelDone()} />
           </View>
           
         </View>

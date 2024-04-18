@@ -52,7 +52,7 @@ const JobTicket = ({navigation}: any) => {
     const renderTicketData = ({item}: any) => {
       return (
         <TouchableOpacity
-        onPress={()=> navigation.navigate('AppliedTutorDetails',item)}
+          onPress={() => navigation.navigate('AppliedTutorDetails', item)}
           activeOpacity={0.8}
           style={{
             borderWidth: 0.8,
@@ -244,10 +244,10 @@ const JobTicket = ({navigation}: any) => {
     };
 
     return (
-      <View style={{width: '100%'}}>
+      <View style={{width: '100%',marginBottom:80}}>
         <View style={{marginTop: 20}}></View>
 
-        <View>
+       
           <View>
             <FlatList
               data={data}
@@ -256,11 +256,11 @@ const JobTicket = ({navigation}: any) => {
               showsHorizontalScrollIndicator={false}
             />
           </View>
-          <View style={{marginBottom: 50}}></View>
-          <View style={{position: 'absolute', bottom: 0, width: '100%'}}>
-            <CustomButton btnTitle="Request New Tutor" />
-            <View style={{marginBottom: 20}}></View>
-          </View>
+        
+        <View style={{}}></View>
+        <View style={{position: 'absolute', bottom: -120, width: '100%'}}>
+          <CustomButton btnTitle="Request New Tutor" />
+          <View style={{marginBottom: 40}}></View>
         </View>
       </View>
     );
@@ -292,7 +292,9 @@ const JobTicket = ({navigation}: any) => {
     const renderAppliedTicketData = ({item}: any) => {
       return (
         <TouchableOpacity
-        onPress={()=>navigation.navigate('TutorRequestDetailsCompleted', item)}
+          onPress={() =>
+            navigation.navigate('TutorRequestDetailsCompleted', item)
+          }
           activeOpacity={0.8}
           style={{
             borderWidth: 0.8,

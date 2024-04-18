@@ -322,7 +322,8 @@ const AppliedTutorDetails = ({navigation, route}: any) => {
         }}>
         <View
           style={{
-            justifyContent: 'center',
+            // justifyContent: 'center',
+            paddingTop:40,
             alignItems: 'center',
             backgroundColor: 'rgba(255, 255, 255,0.70)',
             height: '100%',

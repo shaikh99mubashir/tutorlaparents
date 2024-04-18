@@ -15,6 +15,7 @@ import {FlatList} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Video from 'react-native-video';
+import RNVideo from '../../Components/RNVideo';
 
 const TutorProfile = ({navigation}: any) => {
   const [currentTab, setCurrentTab]: any = useState([
@@ -358,10 +359,7 @@ const TutorProfile = ({navigation}: any) => {
               <Text style={[styles.textType3, {color: 'white'}]}>Reviews</Text>
             </View>
           </View>
-          {/* Edit Button */}
-          <View style={{margin: 15}}></View>
-          <CustomButton btnTitle="Edit Your Profile" onPress={()=>navigation.navigate('EditTutorProfile')} />
-        </View>
+          </View>
         <View style={{margin: 15}}></View>
         <View
           style={{
@@ -385,7 +383,7 @@ const TutorProfile = ({navigation}: any) => {
               justifyContent: 'space-between',
             }}>
             <Text style={styles.textType1}>Reviews</Text>
-            <TouchableOpacity style={{alignItems: 'center', flexDirection:"row", gap:3}}>
+            <TouchableOpacity onPress={()=>navigation.navigate('Review')} style={{alignItems: 'center', flexDirection:"row", gap:3}}>
               <Text style={[styles.textType3, {color: Color.BrightBlue,fontFamily: 'Circular Std Book',}]}>
                 See All
               </Text>
@@ -405,14 +403,17 @@ const TutorProfile = ({navigation}: any) => {
           <View style={{paddingHorizontal:25, position:'relative', top:40}}>
         <Text style={styles.textType1}>My Introduction</Text>
           </View>
-        <View style={styles.container}>
+        {/* <View style={styles.container}>
       <Video
         source={{ uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }} // Replace 'your_video_url_here' with the actual URL of your video
         style={styles.video}
         controls={true}
         resizeMode="contain"
       />
-    </View>
+    </View> */}
+    <View style={{margin:25}}/>
+    <RNVideo/>
+    <View style={{margin:25}}/>
 
         <View style={{paddingHorizontal:25, marginBottom: 15}}>
           <View

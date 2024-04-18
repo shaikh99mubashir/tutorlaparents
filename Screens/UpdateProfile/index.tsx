@@ -17,8 +17,9 @@ import CustomButton from '../../Components/CustomButton';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const UpdateProfile = ({navigation}: any) => {
   const [show, setShow] = useState<boolean>(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [mode, setMode] = useState<any>('date');
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [tempSelectedDate, setTempSelectedDate] = useState<Date | null>(null);
+
   const phoneInput = useRef(null);
   let [phoneNumber, setPhoneNumber] = useState('');
 
@@ -26,178 +27,190 @@ const UpdateProfile = ({navigation}: any) => {
 
   const onChange = (event: any, selectedDate: any) => {
     setShow(false);
-    const currentDate: any = selectedDate;
-    setSelectedDate(currentDate);
-    // setShow(false);
+    if (event.type == 'set') {
+      const currentDate: any = selectedDate || tempSelectedDate;
+      setSelectedDate(currentDate);
+      setTempSelectedDate(null);
+    } else {
+      //cancel button clicked
+      setTempSelectedDate(null);
+    }
   };
+
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleCheckbox = () => {
     setIsChecked(prevState => !prevState);
   };
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
         backgroundColor: Color.GhostWhite,
         paddingHorizontal: 25,
       }}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-      <Header navigation={navigation} BackBtn color={Color.GhostWhite} />
-      <Text style={[styles.textType2]}>Update Profile</Text>
-      <View style={{margin: 8}}></View>
-      <Text
-        style={[styles.textType1, {lineHeight: 20, color: Color.IronsideGrey}]}>
-        We are glad that you Joined with us, {'\n'}Enter your details.{' '}
-      </Text>
-      <View style={{margin: 10}}></View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Header navigation={navigation} BackBtn color={Color.GhostWhite} />
+        <Text style={[styles.textType2]}>Update Profile</Text>
+        <View style={{margin: 8}}></View>
+        <Text
+          style={[
+            styles.textType1,
+            {lineHeight: 20, color: Color.IronsideGrey},
+          ]}>
+          We are glad that you Joined with us, {'\n'}Enter your details.{' '}
+        </Text>
+        <View style={{margin: 10}}></View>
 
-      <InputText placeholder="Full Name" />
-      <View style={{margin: 10}}></View>
-      <View
-        style={{
-          backgroundColor: Color.white,
-          height: 60,
-          borderRadius: 12,
-          justifyContent: 'center',
-          paddingHorizontal: 20,
-        }}>
-        <TouchableOpacity
-          onPress={() => setShow(true)}
-          activeOpacity={0.8}
+        <InputText placeholder="Full Name" />
+        <View style={{margin: 10}}></View>
+        <View
           style={{
-            flexDirection: 'row',
-            gap: 15,
-            paddingVertical: 10,
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <Text style={[styles.textType1, {color: '#A9A9A9'}]}>
-            {selectedDate
-              ? selectedDate.toLocaleDateString([], {
-                  day: '2-digit',
-                  month: 'short',
-                  year: 'numeric',
-                })
-              : ' Date of Birth'}
-          </Text>
-          <Ionicons name="calendar-outline" color={Color.Black} size={25} />
-        </TouchableOpacity>
-      </View>
-
-      <InputText placeholder="Email" />
-      <View style={{margin: 10}}></View>
-      <View>
-        <PhoneInput
-          ref={phoneInput}
-          placeholder="149655271"
-          defaultValue={phoneNumber}
-          disabled
-          defaultCode="MY"
-          layout="first"
-          autoFocus={true}
-          textInputStyle={{
-            color: Color.DustyGrey,
-            height: 50,
-            fontFamily: 'Circular Std Medium',
-            marginLeft: -5,
-            letterSpacing: 1.5,
-          }}
-          textInputProps={{placeholderTextColor: Color.DustyGrey}}
-          codeTextStyle={{
-            marginLeft: 0,
-            color: Color.DustyGrey,
-            fontFamily: 'Circular Std Medium',
-            letterSpacing: 1.5,
-          }}
-          containerStyle={styles.phoneNumberView}
-          flagButtonStyle={{
-            borderRadius: 8,
-            borderWidth: 1,
-            borderColor: Color.DustyGrey,
-            width: 70,
-            height: 40,
-            marginLeft: 10,
-            marginTop: 10,
-          }}
-          // flagComponent={<YourCustomFlagIcon />}
-          textContainerStyle={{
+            backgroundColor: Color.white,
             height: 60,
-            backgroundColor: '#CECECE',
-            borderRadius: 10,
-            borderColor: Color.GhostWhite,
-          }}
-          onChangeFormattedText={text => {
-            setPhoneNumber(text);
-          }}
-        />
-      </View>
-      <InputText placeholder="Address (Area and Street)" />
-      {/* <View style={{margin: 10}}></View> */}
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <View style={{width: '48%'}}>
-          <InputText placeholder="City" />
-        </View>
-        <View style={{width: '48%'}}>
-          <InputText placeholder="State" />
-        </View>
-      </View>
-      <InputText placeholder="Postcode" />
-      <View style={{margin: 10}}></View>
-          <View style={{flexDirection: 'row', gap: 8,}}>
-            {isChecked ? (
-              <TouchableOpacity onPress={() => toggleCheckbox()}>
-                 <MaterialCommunityIcons
-                   name="checkbox-outline"
-                   color={Color.Primary}
-                   size={24}
-                  />
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity
-                onPress={() => toggleCheckbox()}
-                >
-                  <MaterialCommunityIcons
-                   name="checkbox-blank-outline"
-                   color={Color.Primary}
-                   size={24}
-                  />
-                </TouchableOpacity>
-            )}
-            <Text
-              style={[
-                styles.textType1,
-                {
-                  color: Color.IronsideGrey,
-                  fontFamily: 'Circular Std Book',
-                  lineHeight: 23,
-                  width: 330,
-                  fontSize:16
-                },
-              ]}>
-              By doing this, I agree to Tutorla’s {'\n'}<Text style={{textDecorationLine: 'underline',color:Color.Black}}>Terms and Privacy Policy</Text>
+            borderRadius: 12,
+            justifyContent: 'center',
+            paddingHorizontal: 20,
+          }}>
+          <TouchableOpacity
+            onPress={() => setShow(true)}
+            activeOpacity={0.8}
+            style={{
+              flexDirection: 'row',
+              gap: 15,
+              paddingVertical: 10,
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <Text style={[styles.textType1, {color: '#A9A9A9'}]}>
+              {selectedDate
+                ? selectedDate.toLocaleDateString([], {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                  })
+                : 'Date of Birth'}
             </Text>
-            <View style={{margin: 10}}></View>
+            <Ionicons name="calendar-outline" color={Color.Black} size={25} />
+          </TouchableOpacity>
+        </View>
+
+        <InputText placeholder="Email" />
+        <View style={{margin: 10}}></View>
+        <View>
+          <PhoneInput
+            ref={phoneInput}
+            placeholder="149655271"
+            defaultValue={phoneNumber}
+            disabled
+            defaultCode="MY"
+            layout="first"
+            autoFocus={true}
+            textInputStyle={{
+              color: Color.DustyGrey,
+              height: 50,
+              fontFamily: 'Circular Std Medium',
+              marginLeft: -5,
+              letterSpacing: 1.5,
+            }}
+            textInputProps={{placeholderTextColor: Color.DustyGrey}}
+            codeTextStyle={{
+              marginLeft: 0,
+              color: Color.DustyGrey,
+              fontFamily: 'Circular Std Medium',
+              letterSpacing: 1.5,
+            }}
+            containerStyle={styles.phoneNumberView}
+            flagButtonStyle={{
+              borderRadius: 8,
+              borderWidth: 1,
+              borderColor: Color.DustyGrey,
+              width: 70,
+              height: 40,
+              marginLeft: 10,
+              marginTop: 10,
+            }}
+            // flagComponent={<YourCustomFlagIcon />}
+            textContainerStyle={{
+              height: 60,
+              backgroundColor: '#CECECE',
+              borderRadius: 10,
+              borderColor: Color.GhostWhite,
+            }}
+            onChangeFormattedText={text => {
+              setPhoneNumber(text);
+            }}
+          />
+        </View>
+        <InputText placeholder="Address (Area and Street)" />
+        {/* <View style={{margin: 10}}></View> */}
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{width: '48%'}}>
+            <InputText placeholder="City" />
           </View>
-      <View style={{margin: 20}}></View>
-      <CustomButton
-          btnTitle="Continue"
+          <View style={{width: '48%'}}>
+            <InputText placeholder="State" />
+          </View>
+        </View>
+        <InputText placeholder="Postcode" />
+        <View style={{margin: 10}}></View>
+        <View style={{flexDirection: 'row', gap: 8}}>
+          {isChecked ? (
+            <TouchableOpacity onPress={() => toggleCheckbox()}>
+              <MaterialCommunityIcons
+                name="checkbox-outline"
+                color={Color.Primary}
+                size={24}
+              />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={() => toggleCheckbox()}>
+              <MaterialCommunityIcons
+                name="checkbox-blank-outline"
+                color={Color.Primary}
+                size={24}
+              />
+            </TouchableOpacity>
+          )}
+          <Text
+            style={[
+              styles.textType1,
+              {
+                color: Color.IronsideGrey,
+                fontFamily: 'Circular Std Book',
+                lineHeight: 23,
+                width: 330,
+                fontSize: 16,
+              },
+            ]}>
+            By doing this, I agree to Tutorla’s {'\n'}
+            <Text style={{textDecorationLine: 'underline', color: Color.Black}}>
+              Terms and Privacy Policy
+            </Text>
+          </Text>
+          <View style={{margin: 10}}></View>
+        </View>
+        <View style={{margin: 20}}></View>
+        <CustomButton
+          btnTitle="Save"
           backgroundColor={Color.Primary}
           color={Color.white}
-          onPress={() => navigation.navigate('BottomNav')}
+          onPress={() => navigation.replace('BottomNav')}
         />
-         <View style={{margin: 20}}></View>
+        <View style={{margin: 20}}></View>
       </ScrollView>
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
-          value={selectedDate}
-          mode={mode}
+          value={tempSelectedDate || new Date()}
+          mode="date"
+          display="default"
           // is24Hour={true}
+          maximumDate={new Date()}
           onChange={onChange}
         />
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 

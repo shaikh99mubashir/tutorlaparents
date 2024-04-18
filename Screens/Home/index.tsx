@@ -14,6 +14,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Video from 'react-native-video';
+import RNVideo from '../../Components/RNVideo';
 
 const Home = ({navigation}: any) => {
   const levelData = [
@@ -44,7 +45,7 @@ const Home = ({navigation}: any) => {
           backgroundColor: isSelected ? Color.Primary : Color.white,
           marginTop: 20,
           justifyContent: 'center',
-          marginRight: 10,
+          marginRight: 8,
         }}>
         <Text
           style={[
@@ -69,7 +70,7 @@ const Home = ({navigation}: any) => {
       <Image
         source={require('../../Images/Bg.png')}
         resizeMode="cover"
-        style={{width: 150, backgroundColor: 'pink', borderRadius: 10}}
+        style={{width: 130, backgroundColor: 'pink', borderRadius: 10}}
       />
       <View style={{margin: 3}}></View>
       <Text style={[styles.textType2, {fontSize: 20}]}>{item.text}</Text>
@@ -392,11 +393,11 @@ const Home = ({navigation}: any) => {
       style={{
         backgroundColor: Color.white,
         borderRadius: 20,
-        width: 170,
+        width: 160,
         marginBottom: 20,
-        marginRight: 10,
+        marginRight: 15,
       }}>
-      <Image source={item.imageSource} />
+      <Image source={item.imageSource} resizeMode='contain' style={{width:160}}/>
       <View style={{padding: 15}}>
         <Text
           style={[
@@ -519,7 +520,7 @@ const Home = ({navigation}: any) => {
           <Image source={require('../../Images/Banner.png')} />
         </View>
         <View style={{paddingHorizontal: 25}}>
-          <Text style={styles.textType1}>Discover Your Tutor and Teacher</Text>
+          <Text style={[styles.textType2,{fontSize:24}]}>Discover Your Tutor and Teacher</Text>
 
           <View>
             <FlatList
@@ -552,13 +553,8 @@ const Home = ({navigation}: any) => {
           <CustomButton btnTitle="Create Tutor Request" 
             onPress={() => navigation.navigate('TutorRequest')}
           />
-          <View style={{margin: 5}}></View>
-          <CustomButton
-            btnTitle="Student List"
-            onPress={() => navigation.navigate('StudentList')}
-          />
           <View style={{margin: 15}}></View>
-          <Text style={styles.textType2}>Class Reminder</Text>
+          <Text style={[styles.textType2,{fontSize:24}]}>Class Reminder</Text>
           <View style={{margin: 5}}></View>
           <Text
             style={[
@@ -580,7 +576,7 @@ const Home = ({navigation}: any) => {
             />
           </View>
           <View style={{margin: 5}}></View>
-          <Text style={styles.textType2}>Invoice Due</Text>
+          <Text style={[styles.textType2,{fontSize:24}]}>Invoice Due</Text>
           <View style={{margin: 5}}></View>
           <View
             style={{
@@ -604,7 +600,7 @@ const Home = ({navigation}: any) => {
               alignItems: 'center',
               justifyContent: 'space-between',
             }}>
-            <Text style={styles.textType2}>Tutor Attendance</Text>
+            <Text style={[styles.textType2,{fontSize:24}]}>Tutor Attendance</Text>
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => navigation.navigate('TutorClassAttendance')}>
@@ -630,23 +626,13 @@ const Home = ({navigation}: any) => {
             />
           </View>
           <View style={{margin: 10}}></View>
-          <Text style={[styles.textType2, {lineHeight: 30}]}>
+          <Text style={[styles.textType2, {lineHeight: 30, fontSize:24}]}>
             Celebration of the Top Tutors from the Previous Month
           </Text>
           <View style={{margin: 5}}></View>
-          <View style={styles.container}>
-            <Video
-              source={{
-                uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-              }}
-              style={styles.video}
-              controls={true}
-              resizeMode="contain"
-              posterResizeMode="cover"
-            />
-          </View>
+          <RNVideo/>
           <View style={{margin: 15}}></View>
-          <Text style={[styles.textType2, {lineHeight: 30}]}>Events</Text>
+          <Text style={[styles.textType2, {lineHeight: 30,fontSize:24}]}>Events</Text>
           <View style={{margin: 5}}></View>
           <View>
             <FlatList
@@ -654,6 +640,7 @@ const Home = ({navigation}: any) => {
               renderItem={renderEventsItem}
               keyExtractor={item => item.id.toString()}
               horizontal={true} // Set horizontal to true if you want the items to be rendered horizontally
+              showsHorizontalScrollIndicator={false}
             />
           </View>
           <View style={{margin: 5}}></View>
@@ -665,7 +652,7 @@ const Home = ({navigation}: any) => {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                 }}>
-                <Text style={styles.textType2}>Latest News</Text>
+                <Text style={[styles.textType2,{fontSize:24}]}>Latest News</Text>
                 <TouchableOpacity onPress={()=> navigation.navigate('LatestBlog')}>
                   <Text
                     style={[

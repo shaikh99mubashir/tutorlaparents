@@ -73,13 +73,15 @@ const CustomDropDown = (props: any) => {
 
 
   const handleSelect = (value: any) => {
+    console.log("value",value);
+    
     setSelectedValue(value);
-    setAddNewStudent(!addNewStudent)
+    // setAddNewStudent(!addNewStudent)
   };
 
   const handelAddNewStudentPress = () => {
     setAddNewStudent(true)
-    setServiceDD(!serviceDD);
+    // setServiceDD(!serviceDD);
   }
   return (
     <View>
@@ -389,7 +391,8 @@ const CustomDropDown = (props: any) => {
               <RadioButton
                 options={options}
                 onSelect={handleSelect}
-                label="Select Gender"
+                label="Gender"
+                Required
               />
             </View>
           </View>

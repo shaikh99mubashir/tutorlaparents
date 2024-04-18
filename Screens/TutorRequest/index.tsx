@@ -83,13 +83,13 @@ const TutorRequest = ({navigation}: any) => {
     setSelectedStates(updatedStates);
   };
   return (
+    <View style={{
+      height: '100%',
+      backgroundColor: Color.GhostWhite,
+      paddingHorizontal: 25,
+    }}>
     <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={{
-        height: '100%',
-        backgroundColor: Color.GhostWhite,
-        paddingHorizontal: 25,
-      }}>
+      showsVerticalScrollIndicator={false}>
       <Header goBack title="New Tutor Request" navigation={navigation} />
       {/* <Octicons name="check-circle-fill" size={25} color={Color.Primary} /> */}
       <View style={{margin: 5}}></View>
@@ -231,10 +231,11 @@ const TutorRequest = ({navigation}: any) => {
           {renderDropDowns()}
         </View>
       </View>
-      <View style={{marginBottom:30}}>
+    </ScrollView>
+      <View style={{marginVertical:30}}>
         <CustomButton btnTitle='Next' onPress={()=> navigation.navigate('TutorRequestForm2')}/>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

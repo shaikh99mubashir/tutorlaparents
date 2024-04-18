@@ -20,11 +20,12 @@ import {
   import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
   import CustomButton from '../../Components/CustomButton';
   import Entypo from 'react-native-vector-icons/Entypo';
+import SearchBar from '../../Components/SearchBar';
   const TutorClassAttendance = ({navigation}: any) => {
     const [currentTab, setCurrentTab]: any = useState([
       {
         index: 0,
-        name: 'Upcomming',
+        name: 'pending',
         selected: true,
       },
       {
@@ -357,7 +358,8 @@ import {
   
       return (
         <View style={{width: '100%'}}>
-  
+          <View style={{marginTop: 20}}/>
+          <SearchBar/>
           <View style={{marginTop: 20}}>
             <View>
               <FlatList
@@ -654,6 +656,8 @@ import {
       };
       return (
         <View style={{marginTop: 15, width: '100%'}}>
+          <View style={{marginTop: 20}}/>
+          <SearchBar/>
           <View style={{marginTop: 20}}></View>
           <View>
             <FlatList
@@ -676,7 +680,7 @@ import {
           height: '100%',
         }}>
         <Header
-          title="All Scheduled Classes"
+          title="Tutor Attendance"
           goBack
           tab={currentTab}
           navigation={navigation}
@@ -693,7 +697,7 @@ import {
                 firstRoute={firstRoute}
                 secondRoute={secondRoute}
                 activateTab={activateTab}
-                firstRouteTitle="UpComming"
+                firstRouteTitle="Pending"
                 secondRouteTitle={`Past`}
               />
             </View>

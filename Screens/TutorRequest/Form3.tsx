@@ -32,6 +32,8 @@ const Form3 = ({navigation}: any) => {
   ];
 
   const [selectedState, setSelectedState] = useState('');
+  const [selectedDay, setSelectedDay] = useState('');
+  const [requirenments, setRequirenments] = useState('');
   const state = [
     {
       subject: 'SPM',
@@ -40,30 +42,61 @@ const Form3 = ({navigation}: any) => {
       subject: 'IGESE',
     },
   ];
+  const Days = [
+    {
+      subject: 'Monday',
+    },
+    {
+      subject: 'Tuesday',
+    },
+    {
+      subject: 'Wednesday',
+    },
+    {
+      subject: 'Thusday',
+    },
+    {
+      subject: 'Friday',
+    },
+    {
+      subject: 'Saturday',
+    },
+    {
+      subject: 'Sunday',
+    },
+  ];
 
   const [selectedValue, setSelectedValue] = useState(null);
   const handleSelect = (value: any) => {
     setSelectedValue(value);
   };
   const [show, setShow] = useState<boolean>(false);
-  const [selectedTime, setSelectedTime] = useState(new Date());
+  const [selectedTime, setSelectedTime] = useState<Date | null>(null);
+  const [tempSelectedTime, setTempSelectedTime] = useState<Date | null>(null);
+
   const [mode, setMode] = useState<any>('date');
   const onChange = (event: any, selectedTime: any) => {
-    setShow(false);
-    const currentDate: any = selectedTime;
-    setSelectedTime(currentDate);
-    // setShow(false);
+      setShow(false);
+    if (event.type == 'set') {
+      const currentDate: any = selectedTime || tempSelectedTime;
+      setSelectedTime(currentDate);
+      setTempSelectedTime(null);
+    } else {
+      //cancel button clicked
+      setTempSelectedTime(null);
+    }
   };
   console.log('selectedTime', selectedTime);
 
   return (
+    <View style={{
+      height: '100%',
+      backgroundColor: Color.GhostWhite,
+      paddingHorizontal: 25,
+    }}>
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{
-        height: '100%',
-        backgroundColor: Color.GhostWhite,
-        paddingHorizontal: 25,
-      }}>
+      >
       <Header goBack title="New Tutor Request" navigation={navigation} />
       <View style={{margin: 10}}></View>
       <View
@@ -162,7 +195,7 @@ const Form3 = ({navigation}: any) => {
                 width: 25,
                 alignItems: 'center',
               }}>
-              {selectedValue ? (
+              {selectedState && selectedTime && selectedDay ? (
                 <Octicons
                   name="check-circle-fill"
                   size={25}
@@ -179,7 +212,7 @@ const Form3 = ({navigation}: any) => {
             <DefaultDropDown
               setSelectedSubject={setSelectedState}
               selectedSubject={selectedState}
-              ddTitle="Select Frequency"
+              ddTitle="Class Frequency"
               dropdownPlace={'Select Frequency'}
               subject={state}
               categoryShow={'subject'}
@@ -188,11 +221,11 @@ const Form3 = ({navigation}: any) => {
           </View>
           <View>
             <DefaultDropDown
-              setSelectedSubject={setSelectedState}
-              selectedSubject={selectedState}
+              setSelectedSubject={setSelectedDay}
+              selectedSubject={selectedDay}
               ddTitle="Preferable Day"
               dropdownPlace={'Select Day'}
-              subject={state}
+              subject={Days}
               categoryShow={'subject'}
               Required
             />
@@ -235,7 +268,7 @@ const Form3 = ({navigation}: any) => {
                         hour12: true,
                       })
                       .split(' ')[1]
-                  : 'Prefable Time'}
+                  : 'Pick Time'}
               </Text>
               <Image source={require('../../Images/clockicon.png')} />
             </TouchableOpacity>
@@ -284,7 +317,7 @@ const Form3 = ({navigation}: any) => {
                 width: 25,
                 alignItems: 'center',
               }}>
-              {selectedValue ? (
+              {requirenments.length > 0 ? (
                 <Octicons
                   name="check-circle-fill"
                   size={25}
@@ -321,9 +354,9 @@ const Form3 = ({navigation}: any) => {
               placeholder="We will select the best Tutor that matches your requests/requirements"
               multiline={true}
               maxLength={300}
-              // onChangeText={e =>
-              //   setopenDetailItem({...openDetailItem, comment: e})
-              // }
+              onChangeText={e =>
+                setRequirenments(e)
+              }
               style={[
                 styles.textArea,
                 {
@@ -337,10 +370,23 @@ const Form3 = ({navigation}: any) => {
               placeholderTextColor="grey"
             />
           </View>
+          <View style={{margin:5}}></View>
+          <Text style={[styles.textType1,{fontSize:14, fontFamily: 'Circular Std Book',color:Color.DustyGrey}]}>Fee Cost: <Text style={[styles.textType1,{fontSize:18, color:Color.Primary}]}>RM 210</Text></Text>
         </View>
       </View>
 
-      <View style={{marginBottom: 30}}>
+      
+      {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={tempSelectedTime || new Date()}
+          mode={'time'}
+          // is24Hour={true}
+          onChange={onChange}
+        />
+      )}
+    </ScrollView>
+    <View style={{marginVertical: 30}}>
         <View
           style={{
             flexDirection: 'row',
@@ -363,16 +409,7 @@ const Form3 = ({navigation}: any) => {
           </View>
         </View>
       </View>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={selectedTime}
-          mode={'time'}
-          // is24Hour={true}
-          onChange={onChange}
-        />
-      )}
-    </ScrollView>
+    </View>
   );
 };
 
