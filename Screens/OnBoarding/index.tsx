@@ -10,6 +10,7 @@ import {
   StatusBar,
   TouchableOpacity,
   Dimensions,
+  ImageBackground,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Color} from '../../Constant';
@@ -23,6 +24,7 @@ const slides = [
   {
     id: '1',
     image: require('../../Images/ONB1.png'),
+    imagePath: require('../../Images/splash1.jpg'),
     title: 'Accelerate',
     title2: "Your Child's Success",
     subtitle: 'Effortless Tutor Matching, Secure Payments, and ',
@@ -32,6 +34,7 @@ const slides = [
   {
     id: '2',
     image: require('../../Images/ONB2.png'),
+    imagePath: require('../../Images/spalsh2.jpg'),
     title: 'Ensuring',
     title2: 'Top-Quality Education',
     subtitle: 'Thoroughly Vetted Tutors with Background',
@@ -41,6 +44,7 @@ const slides = [
   {
     id: '3',
     image: require('../../Images/ONB3.png'),
+    imagePath: require('../../Images/Spalsh3.jpg'),
     title: '20,000+ Satisfied',
     title2: '  Family and Counting',
     subtitle: 'Experience the Trusted and Reliable Way to Find',
@@ -51,8 +55,8 @@ const slides = [
 
 const Slide = ({item}: any) => {
   return (
-    <View style={{alignItems: 'center', marginTop: 40}}>
-      <View style={{alignItems: 'center', justifyContent: 'center'}}>
+    <>
+      {/* <View style={{alignItems: 'center', justifyContent: 'center'}}>
         <Image
           source={item?.image}
           style={{width: Dimensions.get('screen').width, resizeMode: 'contain'}}
@@ -77,8 +81,9 @@ const Slide = ({item}: any) => {
           }}>
           {item?.title2}
         </Text>
-      </View>
-      <View style={{alignItems: 'center', justifyContent: 'center', top: -30}}>
+      </View> */}
+      {/* <View style={{alignItems: 'center', justifyContent: 'center', top: -30
+      }}>
         <Text
           style={{
             fontFamily: 'Circular Std Book',
@@ -97,11 +102,13 @@ const Slide = ({item}: any) => {
           }}>
           {item?.subtitle2}
         </Text>
-      </View>
-    </View>
+      </View> */}
+    </>
   );
 };
-
+interface OnBoarding {
+  navigation: any; 
+}
 const OnBoarding = ({navigation}: any) => {
   const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
   const ref: any = React.useRef();
@@ -122,11 +129,11 @@ const OnBoarding = ({navigation}: any) => {
   const goToPreviousSlide = () => {
     const nextSlideIndex = currentSlideIndex - 1;
     // if (nextSlideIndex >= 0) {
-      console.log('goToPreviousSlide',nextSlideIndex);
-      
-      const offset = nextSlideIndex * width;
-      ref?.current.scrollToOffset({offset});
-      setCurrentSlideIndex(currentSlideIndex - 1);
+    console.log('goToPreviousSlide', nextSlideIndex);
+
+    const offset = nextSlideIndex * width;
+    ref?.current.scrollToOffset({offset});
+    setCurrentSlideIndex(currentSlideIndex - 1);
     // }
   };
 
@@ -183,7 +190,7 @@ const OnBoarding = ({navigation}: any) => {
           </View>
         ) : (
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View   
+            <View
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -194,7 +201,7 @@ const OnBoarding = ({navigation}: any) => {
                 ''
               ) : (
                 <TouchableOpacity
-                onPress={() => goToPreviousSlide()}
+                  onPress={() => goToPreviousSlide()}
                   style={{
                     backgroundColor: Color.whiteLite,
                     width: 50,
@@ -234,16 +241,6 @@ const OnBoarding = ({navigation}: any) => {
     );
   };
 
-  const roundedCornerStyle = {
-    borderTopLeftRadius: 18,
-    borderBottomLeftRadius: 18,
-  };
-
-  const roundedEndStyle = {
-    borderTopRightRadius: 18,
-    borderBottomRightRadius: 18,
-    left: -1,
-  };
   const UpperScroll = () => {
     return (
       <View
@@ -274,13 +271,13 @@ const OnBoarding = ({navigation}: any) => {
   };
 
   return (
-    <SafeAreaView
+    <ImageBackground
+      source={slides[currentSlideIndex].imagePath}
       style={{
         flex: 1,
-        backgroundColor: slides[currentSlideIndex].backgroundColor,
+        // backgroundColor: slides[currentSlideIndex].backgroundColor,
         paddingTop: 20,
       }}>
-      {/* <StatusBar backgroundColor={COLORS.primary} /> */}
       <View style={{alignItems: 'center', flexDirection: 'row', marginTop: 20}}>
         {/* <View style={{width: '60%'}}>
           <View style={{justifyContent: 'flex-end', alignItems: 'flex-end'}}>
@@ -297,7 +294,7 @@ const OnBoarding = ({navigation}: any) => {
               alignItems: 'flex-end',
               marginRight: 30,
             }}>
-            {currentSlideIndex != slides.length  && (
+            {currentSlideIndex != slides.length && (
               <Text
                 style={{
                   color: Color.white,
@@ -327,7 +324,7 @@ const OnBoarding = ({navigation}: any) => {
         renderItem={({item}) => <Slide item={item} />}
       />
       <Footer />
-    </SafeAreaView>
+    </ImageBackground>
   );
 };
 

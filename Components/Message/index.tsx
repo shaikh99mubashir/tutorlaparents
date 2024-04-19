@@ -8,7 +8,7 @@ import {
 import Animated, {
   withSpring,
   useAnimatedStyle,
-  useAnimatedGestureHandler,
+  // useAnimatedGestureHandler,
   useSharedValue,
 } from 'react-native-reanimated';
 
@@ -45,15 +45,15 @@ const Message = ({time, isLeft, message, onSwipe}: any) => {
     }
   };
 
-  const eventHandler: any = useAnimatedGestureHandler({
-    onStart: (event, ctx) => {},
-    onActive: (event, ctx) => {
-      x.value = isLeft ? 50 : -50;
-    },
-    onEnd: (event, ctx) => {
-      x.value = withSpring(startingPosition);
-    },
-  });
+  // const eventHandler: any = useAnimatedGestureHandler({
+  //   onStart: (event, ctx) => {},
+  //   onActive: (event, ctx) => {
+  //     x.value = isLeft ? 50 : -50;
+  //   },
+  //   onEnd: (event, ctx) => {
+  //     x.value = withSpring(startingPosition);
+  //   },
+  // });
 
   const uas = useAnimatedStyle(() => {
     return {
@@ -64,7 +64,7 @@ const Message = ({time, isLeft, message, onSwipe}: any) => {
   return (
     <FlingGestureHandler
       direction={isLeft ? Directions.RIGHT : Directions.LEFT}
-      onGestureEvent={eventHandler}
+      // onGestureEvent={eventHandler}
       onHandlerStateChange={({nativeEvent}) => {
         if (nativeEvent.state === State.ACTIVE) {
           onSwipe(message, isLeft);

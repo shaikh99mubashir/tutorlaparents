@@ -177,27 +177,6 @@ const Review = ({navigation}: any) => {
           <Header title={'Reviews'} goBack navigation={navigation} />
           <View style={{margin: 0}}></View>
         </View>
-        <View>
-          {/* <Image
-            source={require('../../Images/Ratings.png')}
-            style={{
-              width: Dimensions.get('screen').width / 1.1,
-              alignSelf: 'center',
-            }}
-          /> */}
-          <Text
-            style={[
-              styles.textType3,
-              {
-                position: 'relative',
-                top: -120,
-                right: -55,
-                color: Color.IronsideGrey,
-              },
-            ]}>
-            121 Reviews
-          </Text>
-        </View>
         <TouchableWithoutFeedback onPress={closeDropdown}>
           <View style={{paddingHorizontal: 25, top: -30}}>
             <View style={{flex: 1}}>

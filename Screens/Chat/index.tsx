@@ -161,7 +161,131 @@ const Chat = ({navigation}: any) => {
     );
   }, []);
   const secondRoute = useCallback(() => {
-    return <Text style={{color: 'black'}}></Text>;
+    const data = [
+      {
+        id: '1',
+        name: 'Rene Johnson',
+        message: "Hi there! I hope you're ..",
+        time: '05:50PM',
+        unreadCount: 13,
+      },
+      {
+        id: '2',
+        name: 'Mubashir',
+        message: "Hi there! I hope you're ..",
+        time: '05:50PM',
+        unreadCount: 13,
+      },
+      {
+        id: '3',
+        name: 'Moiz',
+        message: "Hi there! I hope you're ..",
+        time: '05:50PM',
+        unreadCount: 13,
+      },
+    ];
+    const RightSwipe = () => {
+      return (
+        <View
+          style={{
+            backgroundColor: Color.Primary,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginVertical: 5,
+            marginLeft: 10,
+            width: 50,
+            borderRadius: 12,
+          }}>
+          <Image source={require('../../Images/deletew.png')} />
+        </View>
+      );
+    };
+    const LefttSwipe = () => {
+      return (
+       null
+      );
+    };
+    const renderItem = ({item}: any) => {
+      console.log('item',item);
+      
+      return(
+      <Swipeable renderRightActions={RightSwipe} renderLeftActions={LefttSwipe}>
+        <TouchableOpacity
+        onPress={()=> navigation.navigate('MessageScreen', item)}
+          activeOpacity={0.8}
+          style={{
+            borderWidth: 1,
+            borderRadius: 12,
+            // marginBottom: 10,
+            paddingVertical: 15,
+            paddingHorizontal: 20,
+            borderColor: Color.shinyGrey,
+            borderBottomColor: Color.shinyGrey,
+            backgroundColor: Color.white,
+            width: '100%',
+            marginVertical: 5,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              borderColor: Color.shinyGrey,
+            }}>
+            <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
+              <View>
+                <Image source={require('../../Images/avatar.png')} />
+              </View>
+              <View style={{gap: 5}}>
+                <Text style={[styles.textType1, {fontSize: 20}]}>
+                  {item.name}
+                </Text>
+                <Text style={[styles.textType3, {fontSize: 16}]}>
+                  {item.message}
+                </Text>
+              </View>
+            </View>
+            <View
+              style={{
+                alignItems: 'flex-end',
+                justifyContent: 'center',
+                gap: 5,
+              }}>
+              <Text style={[styles.textType3]}>{item.time}</Text>
+              <Text
+                style={[
+                  styles.textType3,
+                  {
+                    backgroundColor: Color.BrightBlue,
+                    color: Color.white,
+                    width: 23,
+                    height: 23,
+                    textAlign: 'center',
+                    borderRadius: 50,
+                    paddingVertical: 1,
+                  },
+                ]}>
+                {item.unreadCount}
+              </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </Swipeable>
+    )};
+
+    return (
+      <>
+        <GestureHandlerRootView>
+          <View style={{margin: 10}}></View>
+          <View>
+            <FlatList
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={item => item.id}
+            />
+          </View>
+        </GestureHandlerRootView>
+      </>
+    );
   }, []);
 
   return (

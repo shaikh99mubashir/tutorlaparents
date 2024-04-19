@@ -56,8 +56,8 @@ const MessageScreen = ({navigation, route}: any) => {
           onOptionsPress={toggleDropDown}
         />
         <View style={{margin:10}}></View>
-        {/* <MessagesList onSwipeToReply={swipeToReply} /> */}
-       {/* <ChatInput reply={reply} isLeft={isLeft} closeReply={closeReply} username={data.name} /> */}
+        <MessagesList onSwipeToReply={swipeToReply} />
+       <ChatInput reply={reply} isLeft={isLeft} closeReply={closeReply} username={data.name} />
 
        {ddOpen ? (
             <View

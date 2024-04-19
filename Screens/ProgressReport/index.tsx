@@ -12,6 +12,7 @@ import {Color} from '../../Constant';
 import {Image} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {FlatList} from 'react-native';
+import CustomButton from '../../Components/CustomButton';
 const ProgressReport = ({navigation}: any) => {
   const [faqsData, setFaqsData]: any = useState<any>([
     {
@@ -302,43 +303,6 @@ const ProgressReport = ({navigation}: any) => {
           </View>
         </View>
         <View style={{margin: 15}}></View>
-        {/* <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          <Image source={require('../../Images/Reportbox.png')} />
-        </View>
-        <View
-          style={{
-            marginHorizontal: 20,
-            position: 'relative',
-            top: -135,
-            paddingHorizontal: 15,
-          }}>
-          <Text style={styles.textType1}>Performance</Text>
-          <View style={{margin: 10}}></View>
-          <View style={{flexDirection: 'row', gap: 10}}>
-            <View>
-              <Image source={require('../../Images/Performance-icon.png')} />
-            </View>
-            <View>
-              <Text
-                style={[
-                  styles.textType3,
-                  {
-                    fontSize: 15,
-                    fontFamily: 'Circular Std Book',
-                    width: '80%',
-                    color: Color.IronsideGrey,
-                  },
-                ]}>
-                Rate Student’s understanding on this Subjects
-              </Text>
-              <View style={{margin: 2}}></View>
-              <Text style={[styles.textType1, {fontSize: 16}]}>Excellent</Text>
-            </View>
-          </View>
-          <View style={{alignItems: 'flex-end'}}>
-            <AntDesign name="downcircleo" size={25} color={Color.Primary} />
-          </View>
-        </View> */}
 
         <View>
           <FlatList
@@ -347,6 +311,11 @@ const ProgressReport = ({navigation}: any) => {
             keyExtractor={item => item.id}
           />
         </View>
+        <View style={{marginTop: 15,paddingHorizontal:25}}>
+
+        <CustomButton btnTitle='Download'/>
+        </View>
+        <View style={{margin: 15}}></View>
       </ScrollView>
     </View>
   );

@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, Share, StyleSheet, Text, View} from 'react-native';
 import React, {useCallback, useState} from 'react';
 import {Color} from '../../Constant';
 import Header from '../../Components/Header';
@@ -215,6 +215,19 @@ const MyReferralEarnings = ({navigation}: any) => {
       },
     ];
 
+    const referralCode = "YOUR_REFERRAL_CODE_HERE";
+
+    const shareReferralCode = async () => {
+      try {
+        const message = `Join me on MyApp! Use my referral code ${referralCode} to get started.`;
+        await Share.share({
+          message: message,
+        });
+      } catch (error) {
+        console.error("Error sharing referral code:", error);
+      }
+    };
+
     const renderItem = ({item}: any) => (
       <View style={{flexDirection: 'row', gap: 10 ,marginBottom:15, width: '80%' }}>
         <View
@@ -250,7 +263,8 @@ const MyReferralEarnings = ({navigation}: any) => {
           />
         </View>
         <View style={{margin: 10}}></View>
-        <CustomButton btnTitle='Invite Now'/>
+        <CustomButton btnTitle='Invite Now' onPress={shareReferralCode}/>
+        <View style={{margin: 10}}></View>
       </View>
     );
   }, []);
@@ -269,7 +283,7 @@ const MyReferralEarnings = ({navigation}: any) => {
           navigation={navigation}
           color={Color.GhostWhite}
         />
-        <View style={{margin: 15}}></View>
+        <View style={{margin: 8}}></View>
         <View
           style={{
             backgroundColor: Color.Primary,

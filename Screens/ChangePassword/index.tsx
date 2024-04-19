@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, ToastAndroid, View} from 'react-native';
 import React from 'react';
 import Header from '../../Components/Header';
 import {Color} from '../../Constant';
@@ -6,6 +6,9 @@ import PasswordInput from '../../Components/PasswordInput';
 import CustomButton from '../../Components/CustomButton';
 
 const ChangePassword = ({navigation}: any) => {
+  const handelUpdate = () => {
+    ToastAndroid.show('Password Updated Successfully', ToastAndroid.SHORT);
+  }
   return (
     <View
       style={{
@@ -33,7 +36,7 @@ const ChangePassword = ({navigation}: any) => {
           placeholder="***************"
         />
         <View style={{marginVertical:40}}>
-        <CustomButton btnTitle='Update'/>
+        <CustomButton btnTitle='Update' onPress={()=> handelUpdate()}/>
         </View>
       </ScrollView>
     </View>

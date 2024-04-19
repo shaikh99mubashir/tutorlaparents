@@ -1,6 +1,8 @@
 import {
   Image,
+  Linking,
   ScrollView,
+  Share,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -12,6 +14,22 @@ import {Color} from '../../Constant';
 import CustomButton from '../../Components/CustomButton';
 import Feather from 'react-native-vector-icons/Feather';
 const InviteFriends = ({navigation}: any) => {
+  const openWhatsApp = () => {
+    const whatsappMessage = `Join me on MyApp! Use my referral code Hello to get started.`;
+    Linking.openURL(`whatsapp://send?text=${encodeURIComponent(whatsappMessage)}`);
+  };
+  const referralCode = "YOUR_REFERRAL_CODE_HERE";
+
+  const shareReferralCode = async () => {
+    try {
+      const message = `Join me on MyApp! Use my referral code ${referralCode} to get started.`;
+      await Share.share({
+        message: message,
+      });
+    } catch (error) {
+      console.error("Error sharing referral code:", error);
+    }
+  };
   return (
     <View
       style={{
@@ -45,7 +63,7 @@ const InviteFriends = ({navigation}: any) => {
         </Text>
         <View style={{margin: 10}}></View>
         <View style={{marginHorizontal: 55}}>
-          <CustomButton btnTitle="Invite" />
+          <CustomButton btnTitle="Invite" onPress={shareReferralCode} />
         </View>
         <Text
           style={[
@@ -56,7 +74,9 @@ const InviteFriends = ({navigation}: any) => {
         </Text>
         <View style={{margin: 2}}></View>
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+          <TouchableOpacity onPress={openWhatsApp}>
           <Image source={require('../../Images/Whatsapp.png')} />
+          </TouchableOpacity>
           <Image source={require('../../Images/Mail.png')} />
           <Image source={require('../../Images/Instagram.png')} />
           <Image source={require('../../Images/link.png')} />
@@ -97,7 +117,7 @@ const InviteFriends = ({navigation}: any) => {
           </View>
           <Feather name="arrow-right" color={Color.white} size={22} />
         </TouchableOpacity>
-        <View style={{margin: 20}}></View>
+        <View style={{margin: 25}}></View>
       </ScrollView>
     </View>
   );

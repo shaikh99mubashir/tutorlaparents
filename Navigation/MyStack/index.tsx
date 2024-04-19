@@ -55,12 +55,12 @@ const MyStack = () => {
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
-        {/* <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
         <Stack.Screen name="GetStarted" component={GetStarted} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="VerifyCode" component={VerifyCode} />
-        <Stack.Screen name="UpdateProfile" component={UpdateProfile} /> */}
+        <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
         <Stack.Screen name="BottomNav" component={BottomNav} />
         <Stack.Screen name="TutorRequest" component={TutorRequest} />
         <Stack.Screen name="TutorRequestForm2" component={Form2} />

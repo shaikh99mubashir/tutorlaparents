@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  PermissionsAndroid,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
 import Header from '../../Components/Header';
@@ -18,10 +19,12 @@ import CustomButton from '../../Components/CustomButton';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import { launchImageLibrary } from 'react-native-image-picker';
 const UpdateProfile = ({navigation}: any) => {
   const [show, setShow] = useState<boolean>(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [mode, setMode] = useState<any>('date');
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [tempSelectedDate, setTempSelectedDate] = useState<Date | null>(null);
   const phoneInput = useRef(null);
   let [phoneNumber, setPhoneNumber] = useState('');
 
@@ -29,15 +32,76 @@ const UpdateProfile = ({navigation}: any) => {
 
   const onChange = (event: any, selectedDate: any) => {
     setShow(false);
-    const currentDate: any = selectedDate;
-    setSelectedDate(currentDate);
-    // setShow(false);
+    if (event.type == 'set') {
+      const currentDate: any = selectedDate || tempSelectedDate;
+      setSelectedDate(currentDate);
+      setTempSelectedDate(null);
+    } else {
+      //cancel button clicked
+      setTempSelectedDate(null);
+    }
   };
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleCheckbox = () => {
     setIsChecked(prevState => !prevState);
   };
+
+
+  const [uri, setUri] = useState('');
+  const [type, setType] = useState('');
+  const [name, setName] = useState('');
+
+  const uploadImageFromGallery = async () => {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.CAMERA,
+    );
+   
+   
+
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.log('running');
+      const options: any = {
+        title: 'Select Picture',
+        storageOptions: {
+          skipBackup: true,
+          path: 'images',
+        },
+        maxWidth: 500,
+        maxHeight: 500,
+        quality: 0.5,
+      };
+      const result: any = await launchImageLibrary(options);
+      if (result.didCancel) {
+        // ('');
+        console.log("Cancelled image selection");
+        
+      } else if (result.errorCode == 'permission') {
+        // setToastMsg('');
+        console.log("Permission Not Satisfied");
+        
+      } else if (result.errorCode == 'others') {
+        // setToastMsg(result.errorMessage);
+        console.log('result.errorMessage',result.errorMessage);
+        
+      } else {
+        console.log('hello');
+        
+        let uri = result.assets[0].uri;
+        let type = result.assets[0].type;
+        let name = result.assets[0].fileName;
+
+        setUri(uri);
+        setType(type);
+        setName(name);
+      }
+    }
+    else{
+      console.log('PermissionsAndroid.RESULTS. Not GRANTED');
+    }
+  };
+  
+  const localImage = 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=1024x1024&w=is&k=20&c=6XEZlH2FjqdpXUqjUK4y0LlWF6yViZVWn9HZJ-IR8gU='
   return (
     <View
       style={{
@@ -62,7 +126,7 @@ const UpdateProfile = ({navigation}: any) => {
           }}>
           <View style={{}}>
             <Image
-              source={require('../../Images/Banner.png')}
+              source={{uri: name ? `file://${uri}` : localImage }}
               style={{
                 width: 120,
                 height: 120,
@@ -71,7 +135,8 @@ const UpdateProfile = ({navigation}: any) => {
                 borderColor: Color.white,
               }}
             />
-            <View
+            <TouchableOpacity 
+            onPress={()=> uploadImageFromGallery()}
               style={{
                 backgroundColor: Color.Primary,
                 borderWidth: 2,
@@ -86,7 +151,7 @@ const UpdateProfile = ({navigation}: any) => {
                 right: -35,
               }}>
               <Fontisto name="picture" color={Color.white} size={14} />
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -187,13 +252,14 @@ const UpdateProfile = ({navigation}: any) => {
           btnTitle="Save"
           onPress={() => navigation.navigate('')}
         />
-        <View style={{margin: 20}}></View>
+        <View style={{margin: 30}}></View>
       </ScrollView>
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
-          value={selectedDate}
-          mode={mode}
+          value={tempSelectedDate || new Date()}
+          mode="date"
+          maximumDate={new Date()}
           // is24Hour={true}
           onChange={onChange}
         />

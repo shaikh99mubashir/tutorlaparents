@@ -69,7 +69,6 @@ const MessagesList = ({ onSwipeToReply }:any) => {
 				scrollView.current.scrollToEnd({ animated: true })
 			}}
 		> 
-		
 			{messages.map((message, index) => (
 				<Message
 					key={index}

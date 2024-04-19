@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import React, {useCallback, useState} from 'react';
@@ -334,8 +335,8 @@ const CompleteClassSchedule = ({navigation}: any) => {
 
     return (
       <View style={{width: '100%'}}>
-        <View style={{marginTop: 20}}></View>
-        <View style={{flex: 1}}>
+        <View style={{marginTop: 60}}></View>
+        {/* <View style={{flex: 1}}>
           <View
             style={{
               flexDirection: 'row',
@@ -416,9 +417,9 @@ const CompleteClassSchedule = ({navigation}: any) => {
               </View>
             </View>
           </View>
-        </View>
+        </View> */}
 
-        <View style={{marginTop: 20}}>
+       
           <View>
             <FlatList
               data={data}
@@ -428,7 +429,7 @@ const CompleteClassSchedule = ({navigation}: any) => {
             />
           </View>
           <View style={{marginBottom: 50}}></View>
-        </View>
+       
       </View>
     );
   }, []);
@@ -459,7 +460,7 @@ const CompleteClassSchedule = ({navigation}: any) => {
 
     const renderPastClasses = ({item}: any) => {
       return (
-       < TouchableOpacity activeOpacity={0.8} style={{marginBottom: 15}}>
+        <TouchableOpacity activeOpacity={0.8} style={{marginBottom: 15}}>
           <View
             style={{
               borderRadius: 20,
@@ -639,18 +640,26 @@ const CompleteClassSchedule = ({navigation}: any) => {
               </Text>
             </View>
             <View style={{margin: 10}}></View>
-           
-            <View style={{paddingTop: 20,
+
+            <View
+              style={{
+                paddingTop: 15,
                 borderTopWidth: 1,
-                borderTopColor: Color.lineColor,}}></View>
-                 <Text style={[styles.textType3,{fontSize:13, color:Color.DustyGrey}]}>Posted:</Text>
-                 <View style={{margin: 3}}></View>
+                borderTopColor: Color.lineColor,
+              }}></View>
+            <Text
+              style={[
+                styles.textType3,
+                {fontSize: 13, color: Color.DustyGrey},
+              ]}>
+              Posted:
+            </Text>
+            <View style={{margin: 3}}></View>
             <View
               style={{
                 flexDirection: 'row',
-                justifyContent:'space-between'
+                justifyContent: 'space-between',
               }}>
-                
               <View
                 style={{
                   backgroundColor: Color.PattensBlue,
@@ -678,19 +687,29 @@ const CompleteClassSchedule = ({navigation}: any) => {
                   </Text>
                 </View>
               </View>
-              <View
-            style={{
-              backgroundColor: Color.SmaltBlue ,
-              padding: 8,
-              borderRadius: 50,
-              width: 100,
-              alignItems: 'center',
-              justifyContent:'center',
-              flexDirection:'row'
-            }}>
-            <Text style={{ color: Color.white, fontFamily: 'Circular Std Book',textAlign:"center" ,paddingRight:10}}>Report</Text>
-            <AntDesign name='arrowright' color={Color.white} size={18}/>
-          </View>
+              <TouchableOpacity
+              onPress={()=> navigation.navigate('StudentReport')}
+              activeOpacity={0.8}
+                style={{
+                  backgroundColor: Color.SmaltBlue,
+                  padding: 8,
+                  borderRadius: 50,
+                  width: 100,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                }}>
+                <Text
+                  style={{
+                    color: Color.white,
+                    fontFamily: 'Circular Std Book',
+                    textAlign: 'center',
+                    paddingRight: 10,
+                  }}>
+                  Report
+                </Text>
+                <AntDesign name="arrowright" color={Color.white} size={18} />
+              </TouchableOpacity>
             </View>
           </View>
         </TouchableOpacity>
@@ -815,6 +834,108 @@ const CompleteClassSchedule = ({navigation}: any) => {
           nestedScrollEnabled
           showsVerticalScrollIndicator={false}
           style={{}}>
+          <TouchableWithoutFeedback onPress={closeDropdown}>
+            <View style={{position: 'absolute', right: 0, top: 80, zIndex: 10}}>
+              <View style={{flex: 1}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-end',
+                    alignItems: 'center',
+                  }}>
+                  <View style={{flexDirection: 'row', gap: 10}}>
+                    <Text
+                      style={[
+                        styles.textType3,
+                        {
+                          color: Color.IronsideGrey,
+                          fontFamily: 'Circular Std Book',
+                          fontSize: 14,
+                          position: 'relative',
+                          top: 6,
+                        },
+                      ]}>
+                      Sort By
+                    </Text>
+                    <View>
+                      <TouchableOpacity
+                        onPress={() => setDDOpen(!ddOpen)}
+                        activeOpacity={0.8}
+                        style={{
+                          backgroundColor: Color.white,
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                          paddingVertical: 5,
+                          alignItems: 'center',
+                          borderRadius: 6,
+                          paddingHorizontal: 8,
+                          borderWidth: 1,
+                          borderColor: Color.lineColor,
+                          width: 135,
+                        }}>
+                        <Text style={[styles.textType3, {fontSize: 14}]}>
+                          {selectedValue}
+                        </Text>
+                        {ddOpen ? (
+                          <Feather
+                            name="chevron-up"
+                            size={20}
+                            color={Color.Dune}
+                          />
+                        ) : (
+                          <Feather
+                            name="chevron-down"
+                            size={20}
+                            color={Color.Dune}
+                          />
+                        )}
+                      </TouchableOpacity>
+                      {ddOpen ? (
+                        <View
+                          style={{
+                            backgroundColor: Color.white,
+                            borderRadius: 6,
+                            paddingHorizontal: 20,
+                            paddingTop: 15,
+                            marginTop: 3,
+                            zIndex: 999,
+                            position: 'absolute',
+                            top: 32,
+                            width: 135,
+                            elevation: 2,
+                          }}>
+                          {DropDownValues &&
+                            DropDownValues.map((e: any, i: number) => {
+                              return (
+                                <TouchableOpacity
+                                  key={i}
+                                  onPress={() => selectedValues(e)}>
+                                  <Text
+                                    style={[
+                                      styles.textType3,
+                                      {fontSize: 14, paddingBottom: 16},
+                                    ]}>
+                                    {e.ddValue ? e.ddValue : e.ddValue[0]}
+                                  </Text>
+                                </TouchableOpacity>
+                              );
+                            })}
+                        </View>
+                      ) : null}
+                    </View>
+                  </View>
+                </View>
+              </View>
+              {/* <View style={{alignItems: 'flex-end',position:'relative',left:0,right:0}}>
+              <CustomDropDown3
+                items={DropDownValues}
+                defaultSelected={selectedValue}
+                onSelect={handleDropdownSelection}
+              />
+            </View> */}
+            </View>
+          </TouchableWithoutFeedback>
+
           <View style={{marginTop: 10}}>
             <CustomTabView
               currentTab={currentTab}
